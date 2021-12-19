@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.hospital.service.CustomUserDetailsService;
  
@@ -22,9 +24,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
      
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public PasswordEncoder  passwordEncoder() {
     	System.out.println("called... passwordEncoder");
-        return new BCryptPasswordEncoder();
+        //return new BCryptPasswordEncoder();
+    	return NoOpPasswordEncoder.getInstance();
     }
 
     @Override
@@ -37,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/**").hasAnyRole("ADMIN","USER");
+            .antMatchers("/**").permitAll();
         http.csrf().disable();
         super.configure(http);
     }
