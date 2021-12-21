@@ -26,12 +26,4 @@ public class HospitalApplication {
         return new Docket(DocumentationType.SWAGGER_2).select()
             .apis(RequestHandlerSelectors.basePackage("com.hospital")).build();
     }
-    
-    @Autowired 
-    private RepositoryRestConfiguration repositoryRestConfiguration;
-
-    @PostConstruct
-    public void exposeIds() {
-        this.repositoryRestConfiguration.setReturnBodyForPutAndPost(true);
-    }
 }

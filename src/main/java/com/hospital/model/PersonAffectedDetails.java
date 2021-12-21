@@ -9,26 +9,30 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import lombok.Data;
+
 @Entity
-@Table(name = "Category")
+@Table(name = "PersonAffectedDetails")
 @RestResource
 @Data
-public class Category {
+public class PersonAffectedDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long categoryId;
+    private Integer id;
 
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SubCategory> subCategory;
+    private boolean show;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "pa_id", nullable = false)
+    private PersonAffected personAffected;
 }

@@ -16,19 +16,20 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import lombok.Data;
 @Entity
-@Table(name = "Category")
+@Table(name = "PersonAffected")
 @RestResource
 @Data
-public class Category {
+public class PersonAffected {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long categoryId;
+    private Integer pa_id;
 
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SubCategory> subCategory;
+    @OneToMany(mappedBy = "personAffected", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @RestResource(exported = false)
+    private List<PersonAffectedDetails> personAffectedDetails;
 
 }

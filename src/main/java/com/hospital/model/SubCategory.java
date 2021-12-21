@@ -1,8 +1,6 @@
 package com.hospital.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -16,16 +14,23 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import lombok.Data;
 
+
 @Entity
-@Table(name = "tbl_sub_category")
+@Table(name = "SubCategory")
 @RestResource
 @Data
 public class SubCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long subCategoryId;
-    private String subCategoryName;
+    private Long id;
+
+    @Column(nullable = false)
+    private String name;
+
     private int template;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "categoryId", nullable = false)
+    private Category category;
 }
