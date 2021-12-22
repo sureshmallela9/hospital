@@ -23,13 +23,12 @@ public class ContributingFactors {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer cf_id;
+    private Long cf_id;
 
     @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "contributingFactors", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @RestResource(exported = false)
     private List<ContributingFactorDetails> contributingFactorDetails;
 
 }

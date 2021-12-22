@@ -25,14 +25,14 @@ public class PersonAffectedDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
 
     private boolean show;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "pa_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "pa_id", nullable = true)
     private PersonAffected personAffected;
 }

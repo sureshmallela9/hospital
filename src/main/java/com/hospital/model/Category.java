@@ -25,7 +25,6 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long categoryId;
 
-    @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)

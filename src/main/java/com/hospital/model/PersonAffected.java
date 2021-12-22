@@ -23,13 +23,12 @@ public class PersonAffected {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer pa_id;
+    private Long pa_id;
 
     @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "personAffected", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    @RestResource(exported = false)
     private List<PersonAffectedDetails> personAffectedDetails;
 
 }
