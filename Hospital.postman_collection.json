@@ -40,7 +40,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"sub doctors Category\",\r\n    \"template\":100,\r\n    \"category\":{\r\n        \"categoryId\":1\r\n     }\r\n}",
+					"raw": "{\r\n    \"name\": \"sub doctors Category 7\",\r\n    \"template\":100,\r\n    \"category\": \"http://localhost:1000/category/1\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

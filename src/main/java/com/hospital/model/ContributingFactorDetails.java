@@ -26,7 +26,7 @@ import lombok.Data;
 public class ContributingFactorDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -34,6 +34,6 @@ public class ContributingFactorDetails {
 
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "cf_id", nullable = true)
+    @JoinColumn(name = "cf_id", nullable = false)
     private ContributingFactors contributingFactors;
 }

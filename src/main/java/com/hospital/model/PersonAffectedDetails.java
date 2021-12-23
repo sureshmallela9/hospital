@@ -24,7 +24,7 @@ import lombok.Data;
 public class PersonAffectedDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -33,6 +33,6 @@ public class PersonAffectedDetails {
     private boolean show;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "pa_id", nullable = true)
+    @JoinColumn(name = "pa_id", nullable = false)
     private PersonAffected personAffected;
 }

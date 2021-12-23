@@ -22,7 +22,7 @@ import lombok.Data;
 public class ContributingFactors {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cf_id;
 
     @Column(nullable = false)

@@ -22,7 +22,7 @@ import lombok.Data;
 public class PersonAffected {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pa_id;
 
     @Column(nullable = false)

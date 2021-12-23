@@ -1,7 +1,5 @@
 package com.hospital.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,10 +17,10 @@ import lombok.Data;
 
 
 @Entity
-@Table(name = "SubCategory")
+@Table(name = "TwoFieldMasterDetails")
 @RestResource
 @Data
-public class SubCategory {
+public class TwoFieldMasterDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,10 +28,8 @@ public class SubCategory {
 
     private String name;
 
-    private int template;
-
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+    @JoinColumn(name = "twoFieldMaster_id", nullable = false)
+    private TwoFieldMaster twoFieldMaster;
 }
