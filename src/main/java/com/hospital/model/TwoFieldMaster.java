@@ -10,14 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.springframework.data.rest.core.annotation.RestResource;
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.Data;
 @Entity
 @Table(name = "TwoFieldMaster")
 @RestResource
-@Data
+@Getter
+@Setter
 public class TwoFieldMaster {
 
     @Id

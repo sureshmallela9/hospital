@@ -13,11 +13,14 @@ import javax.persistence.Table;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "RCA")
 @RestResource
-@Data
+@Getter
+@Setter
 public class Rca {
 
     @Id

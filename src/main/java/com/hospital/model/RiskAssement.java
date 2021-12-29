@@ -6,12 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "RiskAssement")
 @RestResource
-@Data
+@Getter
+@Setter
 public class RiskAssement {
 
     @Id

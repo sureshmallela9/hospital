@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import com.hospital.model.RcaCauses;
 
 @RepositoryRestResource(collectionResourceRel = "rcaCauses", path = "rcaCauses")
+@CrossOrigin("*")
 public interface RcaCausesRepository extends CrudRepository<RcaCauses, Long> {
     public RcaCauses findById(long id);
     public List<RcaCauses> findAll();

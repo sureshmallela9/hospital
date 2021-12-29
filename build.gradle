@@ -30,10 +30,12 @@ dependencies {
     implementation 'io.springfox:springfox-data-rest:3.0.0'
     implementation 'io.springfox:springfox-swagger-ui:2.4.0'
     implementation 'io.springfox:springfox-swagger2:2.4.0'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
     testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.apache.httpcomponents:httpclient'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

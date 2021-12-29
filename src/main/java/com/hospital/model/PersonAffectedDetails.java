@@ -1,8 +1,5 @@
 package com.hospital.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,15 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.springframework.data.rest.core.annotation.RestResource;
-
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "PersonAffectedDetails")
 @RestResource
-@Data
+@Getter
+@Setter
 public class PersonAffectedDetails {
 
     @Id

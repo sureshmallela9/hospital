@@ -13,13 +13,15 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 @Entity
 @Table(name = "TwoFieldMasterDetails")
 @RestResource
-@Data
+@Getter
+@Setter
 public class TwoFieldMasterDetails {
 
     @Id
