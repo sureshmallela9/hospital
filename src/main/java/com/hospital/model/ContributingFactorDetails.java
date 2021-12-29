@@ -32,5 +32,6 @@ public class ContributingFactorDetails {
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "cf_id", nullable = false)
+    @RestResource(exported = false)
     private ContributingFactors contributingFactors;
 }

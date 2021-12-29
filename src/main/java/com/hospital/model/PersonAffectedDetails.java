@@ -31,5 +31,6 @@ public class PersonAffectedDetails {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "pa_id", nullable = false)
+    @RestResource(exported = false)
     private PersonAffected personAffected;
 }

@@ -30,6 +30,7 @@ public class ContributingFactors {
     private String name;
 
     @OneToMany(mappedBy = "contributingFactors", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @RestResource(exported = false)
     private List<ContributingFactorDetails> contributingFactorDetails;
 
 }

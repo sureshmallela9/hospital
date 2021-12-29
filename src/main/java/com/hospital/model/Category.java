@@ -15,12 +15,10 @@ import javax.persistence.Table;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 @Entity
 @Table(name = "Category")
-@RestResource
 @Getter
 @Setter
 public class Category {
@@ -32,6 +30,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @RestResource(exported = false)
     private List<SubCategory> subCategory;
 
 }

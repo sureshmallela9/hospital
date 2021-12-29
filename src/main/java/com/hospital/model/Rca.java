@@ -30,6 +30,7 @@ public class Rca {
     private String name;
 
     @OneToMany(mappedBy = "rca", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @RestResource(exported = false)
     private List<RcaCauses> rcaCauses;
 
 }

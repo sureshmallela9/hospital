@@ -19,7 +19,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "SubCategory")
-@RestResource
 @Getter
 @Setter
 public class SubCategory {
@@ -35,5 +34,6 @@ public class SubCategory {
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "category_id", nullable = false)
+    @RestResource(exported = false)
     private Category category;
 }

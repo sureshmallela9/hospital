@@ -33,5 +33,6 @@ public class TwoFieldMasterDetails {
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "twoFieldMaster_id", nullable = false)
+    @RestResource(exported = false)
     private TwoFieldMaster twoFieldMaster;
 }

@@ -31,5 +31,6 @@ public class RcaCauses {
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name = "rca_id", nullable = false)
+    @RestResource(exported = false)
     private Rca rca;
 }

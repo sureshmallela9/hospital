@@ -30,6 +30,7 @@ public class PersonAffected {
     private String name;
 
     @OneToMany(mappedBy = "personAffected", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @RestResource(exported = false)
     private List<PersonAffectedDetails> personAffectedDetails;
 
 }
