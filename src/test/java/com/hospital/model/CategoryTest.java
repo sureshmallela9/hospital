@@ -29,7 +29,7 @@ public class CategoryTest {
         subCategory.setName(NAME);
         subCategory.setTemplate(TEMPLATE);
         subCategoryList.add(subCategory);
-        category.setSubCategory(subCategoryList);
+        category.setSubCategorys(subCategoryList);
     }
 
     @AfterEach
@@ -44,6 +44,6 @@ public class CategoryTest {
         assertEquals(ID, category.getId());
         assertEquals(ID, subCategory.getId());
         assertEquals(NAME, subCategory.getName());
-        assert category.getSubCategory() != null;
+        assert category.getSubCategorys() != null;
     }
 }

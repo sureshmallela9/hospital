@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
@@ -34,7 +35,11 @@ public class PersonAffectedDetails {
 
     @ManyToOne
     @JoinColumn(name = "pa_id", nullable = true)
-    @JsonIgnore
     @RestResource(exported = false)
     private PersonAffected personAffected;
+
+    @JsonBackReference
+    public PersonAffected getPersonAffected() {
+        return personAffected;
+    }
 }

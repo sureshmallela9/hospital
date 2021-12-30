@@ -6,356 +6,398 @@
 	},
 	"item": [
 		{
-			"name": "Category Create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"doctors Category\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Category",
+			"item": [
+				{
+					"name": "Category Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Second Category\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/category",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"category"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:1000/category",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"category"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Sub Category Create",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"sub doctors Category 7\",\r\n    \"template\":100,\r\n    \"category\": \"http://localhost:1000/category/1\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Sub Category Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"sub Category 2 \",\r\n    \"template\":100,\r\n    \"category\": {\r\n        \"id\":1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/subCategory",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"subCategory"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:1000/subCategory",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"subCategory"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ALL",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000"
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get ALL Category",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/category",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"category"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Category BY ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/category/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"category",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Category Update BY ID",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"doctors Category updae\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Get ALL Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/category",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"category"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:1000/category/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"category",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Category BY ID",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/category/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"category",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Sub Category",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/subCategory",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"subCategory"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Contributing Factor",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/contributingFactors",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"contributingFactors"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Contributing Factor By Id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/contributingFactors/6",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"contributingFactors",
-						"6"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Contributing Details ",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/contributingFactorDetails",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"contributingFactorDetails"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Contributing Factor Details",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"sub doctors Category\",\r\n    \"contributingFactors\":{\r\n        \"cf_id\":1\r\n     }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Get Category BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/category/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"category",
+								"3"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:1000/contributingFactorDetails",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"contributingFactorDetails"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET Contributing Factor Details BY ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/contributingFactorDetails/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"contributingFactorDetails",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "GET ALL PERSON AFFECTED",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/personAffected",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"personAffected"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get By ID PERSON AFFECTED",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:1000/personAffected/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"personAffected",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:1000/personAffectedDetails",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"person affected details\",\r\n    \"personAffectedDetails\": {\r\n        \"pa_id\": 5\r\n    }\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Category Update BY ID",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"doctors Category updae\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/category/1",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:1000/personAffectedDetails",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "1000",
-					"path": [
-						"personAffectedDetails"
-					]
+				{
+					"name": "Get Sub Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/subCategory",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"subCategory"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "PersonAffected",
+			"item": [
+				{
+					"name": "{{path}}/personAffected",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/personAffected",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"personAffected"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{path}}/personAffected",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"First Person Affected\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/personAffected",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"personAffected"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{path}}/personAffectedDetails",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/personAffectedDetails",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"personAffectedDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL PERSON AFFECTED",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/personAffected",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"personAffected"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By ID PERSON AFFECTED",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/personAffected/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"personAffected",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{path}}/personAffectedDetails",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"personAffected 1 \",\r\n    \"personAffected\": {\r\n        \"pa_id\":2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/personAffectedDetails",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"personAffectedDetails"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contributing Factor",
+			"item": [
+				{
+					"name": "Get Contributing Factor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/contributingFactors",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"contributingFactors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contributing Factor By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/contributingFactors/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"contributingFactors",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Contributing Details ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/contributingFactorDetails",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"contributingFactorDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Contributing Factor Details",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"cf details 2\",\r\n    \"contributingFactors\":{\r\n        \"cf_id\":1\r\n     }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/contributingFactorDetails",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"contributingFactorDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Contributing Factor Details BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/contributingFactorDetails/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"contributingFactorDetails",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "All",
+			"item": [
+				{
+					"name": "ALL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}",
+							"host": [
+								"{{path}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

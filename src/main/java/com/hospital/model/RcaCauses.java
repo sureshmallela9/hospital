@@ -12,6 +12,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
@@ -33,7 +34,11 @@ public class RcaCauses {
 
     @ManyToOne
     @JoinColumn(name = "rca_id", nullable = false)
-    @JsonIgnore
     @RestResource(exported = false)
     private Rca rca;
+
+    @JsonBackReference
+    public Rca getRca() {
+        return rca;
+    }
 }

@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,5 +34,10 @@ public class TwoFieldMaster {
     @OneToMany(mappedBy = "twoFieldMaster", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @RestResource(exported = false)
     private List<TwoFieldMasterDetails> twoFieldMasterDetails;
+
+    @JsonManagedReference
+    public List<TwoFieldMasterDetails> getTwoFieldMasterDetails() {
+        return twoFieldMasterDetails;
+    }
 
 }

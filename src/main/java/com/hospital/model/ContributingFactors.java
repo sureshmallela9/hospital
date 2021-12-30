@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +32,14 @@ public class ContributingFactors {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "contributingFactors", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "contributingFactors")
     @RestResource(exported = false)
     private List<ContributingFactorDetails> contributingFactorDetails;
 
+    @JsonManagedReference
+    public List<ContributingFactorDetails> getContributingFactorDetails() {
+        return contributingFactorDetails;
+    }
+
+    
 }

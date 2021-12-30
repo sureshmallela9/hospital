@@ -14,6 +14,7 @@ import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.rest.core.annotation.RestResource;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +36,11 @@ public class TwoFieldMasterDetails {
     @ManyToOne
     @JoinColumn(name = "twoFieldMaster_id", nullable = true)
     @RestResource(exported = false)
-    @JsonIgnore
     private TwoFieldMaster twoFieldMaster;
+
+    @JsonManagedReference
+    public TwoFieldMaster getTwoFieldMaster() {
+        return twoFieldMaster;
+    }
+    
 }

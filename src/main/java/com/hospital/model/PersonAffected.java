@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +32,12 @@ public class PersonAffected {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "personAffected", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "personAffected")
     @RestResource(exported = false)
     private List<PersonAffectedDetails> personAffectedDetails;
 
+    @JsonManagedReference
+    public List<PersonAffectedDetails> getPersonAffectedDetails() {
+        return personAffectedDetails;
+    }
 }

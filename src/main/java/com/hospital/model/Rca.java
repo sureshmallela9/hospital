@@ -13,6 +13,9 @@ import javax.persistence.Table;
 
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +32,13 @@ public class Rca {
 
     private String name;
 
-    @OneToMany(mappedBy = "rca", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "rca")
     @RestResource(exported = false)
     private List<RcaCauses> rcaCauses;
 
+    @JsonManagedReference
+    public List<RcaCauses> getRcaCauses() {
+        return rcaCauses;
+    }
+    
 }

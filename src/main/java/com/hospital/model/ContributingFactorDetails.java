@@ -9,6 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,4 +34,10 @@ public class ContributingFactorDetails {
     @JoinColumn(name = "cf_id",nullable = true)
     @RestResource(exported = false)
     private ContributingFactors contributingFactors;
+
+    @JsonBackReference
+    public ContributingFactors getContributingFactors() {
+        return contributingFactors;
+    }
+
 }

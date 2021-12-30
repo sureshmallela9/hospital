@@ -9,7 +9,7 @@ import com.hospital.model.SubCategory;
 
 @RepositoryRestResource(collectionResourceRel = "subCategory", path = "subCategory")
 @CrossOrigin("*")
-public interface subCategoryRepository extends CrudRepository<SubCategory, Long> {
+public interface SubCategoryRepository extends CrudRepository<SubCategory, Long> {
     public SubCategory findById(int id);
     public Set<SubCategory> findAll();
 }
