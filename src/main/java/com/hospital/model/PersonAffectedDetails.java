@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.data.rest.core.annotation.RestResource;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +32,9 @@ public class PersonAffectedDetails {
 
     private boolean show;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "pa_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "pa_id", nullable = true)
+    @JsonIgnore
     @RestResource(exported = false)
     private PersonAffected personAffected;
 }

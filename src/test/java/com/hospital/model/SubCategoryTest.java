@@ -9,27 +9,24 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class CategoryTest {
+public class SubCategoryTest {
 
     public static final String NAME = "categoryName";
     public static final Long ID = 1L;
     public static final int TEMPLATE = 1;
-    private Category category;
     private SubCategory subCategory;
-    private Set<SubCategory> subCategoryList;
-    
+    private Category category;
+
     @BeforeEach
     public void setUp() throws Exception {
         category = new Category();
         subCategory = new SubCategory();
-        subCategoryList = new HashSet<>();
         category.setId(ID);
         category.setName(NAME);
         subCategory.setId(ID);
         subCategory.setName(NAME);
         subCategory.setTemplate(TEMPLATE);
-        subCategoryList.add(subCategory);
-        category.setSubCategory(subCategoryList);
+        subCategory.setCategory(category);
     }
 
     @AfterEach
@@ -39,11 +36,12 @@ public class CategoryTest {
     }
 
     @Test
-    public void testCategoryDetails() throws Exception {
+    public void testSubCategoryDetails() throws Exception {
         assertEquals(NAME, category.getName());
         assertEquals(ID, category.getId());
         assertEquals(ID, subCategory.getId());
         assertEquals(NAME, subCategory.getName());
-        assert category.getSubCategory() != null;
+        assertEquals(TEMPLATE, subCategory.getTemplate());
+        assert subCategory.getCategory() != null;
     }
 }

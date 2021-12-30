@@ -13,6 +13,8 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,9 +32,9 @@ public class TwoFieldMasterDetails {
 
     private String name;
 
-    @NotFound(action = NotFoundAction.IGNORE)
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "twoFieldMaster_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "twoFieldMaster_id", nullable = true)
     @RestResource(exported = false)
+    @JsonIgnore
     private TwoFieldMaster twoFieldMaster;
 }
