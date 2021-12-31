@@ -13,6 +13,7 @@ public class PersonAffectedDetailsTest {
 
     public static final String NAME = "categoryName";
     public static final Long ID = 1L;
+    public static final Boolean SHOW = true;
     private PersonAffectedDetails personAffectedDetails;
     private PersonAffected personAffected;
 
@@ -24,6 +25,7 @@ public class PersonAffectedDetailsTest {
         personAffected.setName(NAME);
         personAffectedDetails.setId(ID);
         personAffectedDetails.setName(NAME);
+        personAffectedDetails.setShow(true);
         personAffectedDetails.setPersonAffected(personAffected);
     }
 
@@ -39,6 +41,7 @@ public class PersonAffectedDetailsTest {
         assertEquals(ID, personAffected.getPa_id());
         assertEquals(ID, personAffectedDetails.getId());
         assertEquals(NAME, personAffectedDetails.getName());
+        assertEquals(SHOW, personAffectedDetails.isShow());
         assert personAffectedDetails.getPersonAffected() != null;
     }
 }

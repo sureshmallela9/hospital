@@ -31,7 +31,7 @@ public class TwoFieldMaster {
 
     private String name;
 
-    @OneToMany(mappedBy = "twoFieldMaster", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "twoFieldMaster")
     @RestResource(exported = false)
     private List<TwoFieldMasterDetails> twoFieldMasterDetails;
 

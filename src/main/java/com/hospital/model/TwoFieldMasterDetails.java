@@ -13,6 +13,7 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.rest.core.annotation.RestResource;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -38,7 +39,7 @@ public class TwoFieldMasterDetails {
     @RestResource(exported = false)
     private TwoFieldMaster twoFieldMaster;
 
-    @JsonManagedReference
+    @JsonBackReference
     public TwoFieldMaster getTwoFieldMaster() {
         return twoFieldMaster;
     }

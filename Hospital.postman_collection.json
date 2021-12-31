@@ -9,7 +9,7 @@
 			"name": "Category",
 			"item": [
 				{
-					"name": "Category Create",
+					"name": "SAVE CATEGORY",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -35,7 +35,7 @@
 					"response": []
 				},
 				{
-					"name": "Sub Category Create",
+					"name": "SAVE SUB CATEGORY",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -83,15 +83,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:1000/category/3",
-							"protocol": "http",
+							"raw": "{{path}}/category/1",
 							"host": [
-								"localhost"
+								"{{path}}"
 							],
-							"port": "1000",
 							"path": [
 								"category",
-								"3"
+								"1"
 							]
 						}
 					},
@@ -147,7 +145,7 @@
 			"name": "PersonAffected",
 			"item": [
 				{
-					"name": "{{path}}/personAffected",
+					"name": "Get PersonAffected",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -164,7 +162,7 @@
 					"response": []
 				},
 				{
-					"name": "{{path}}/personAffected",
+					"name": "SAVE PERSON AFFECED",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -190,7 +188,7 @@
 					"response": []
 				},
 				{
-					"name": "{{path}}/personAffectedDetails",
+					"name": "GET PERSON AFFECTED DETAILS",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -246,7 +244,7 @@
 					"response": []
 				},
 				{
-					"name": "{{path}}/personAffectedDetails",
+					"name": "SAVE PERSON AFFECTED DETAILS",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -392,6 +390,439 @@
 							"raw": "{{path}}",
 							"host": [
 								"{{path}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RCA",
+			"item": [
+				{
+					"name": "GET RCA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://139.59.44.254:8080/rca",
+							"protocol": "http",
+							"host": [
+								"139",
+								"59",
+								"44",
+								"254"
+							],
+							"port": "8080",
+							"path": [
+								"rca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE RCA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"RCA NAME 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://139.59.44.254:8080/rca",
+							"protocol": "http",
+							"host": [
+								"139",
+								"59",
+								"44",
+								"254"
+							],
+							"port": "8080",
+							"path": [
+								"rca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET RCA CAUSES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://139.59.44.254:8080/rcaCauses",
+							"protocol": "http",
+							"host": [
+								"139",
+								"59",
+								"44",
+								"254"
+							],
+							"port": "8080",
+							"path": [
+								"rcaCauses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE RCA CAUSES",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"RCA CAUSES 2 \",\r\n    \"rca\": {\r\n        \"id\":1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://139.59.44.254:8080/rcaCauses",
+							"protocol": "http",
+							"host": [
+								"139",
+								"59",
+								"44",
+								"254"
+							],
+							"port": "8080",
+							"path": [
+								"rcaCauses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RISK ASSEMENT",
+			"item": [
+				{
+					"name": "GET RISK ASSEMENT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/riskAssement",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"riskAssement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE RISK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"likelihood\":1,\r\n    \"serverity\":2,\r\n    \"riskscore\":3,\r\n    \"riskstatus\":4,\r\n    \"color\":\"color\",\r\n    \"template\":\"template\",\r\n    \"status\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/riskAssement",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"riskAssement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET RISK BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/riskAssement/2",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"riskAssement",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE RISK ",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"likelihood\": 1,\r\n    \"serverity\": 2,\r\n    \"riskscore\": 3,\r\n    \"riskstatus\": 4,\r\n    \"color\": \"color\",\r\n    \"template\": \"update\",\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/riskAssement/2",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"riskAssement",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LOCATION",
+			"item": [
+				{
+					"name": "GET LOCATION",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/location",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE LOCATION",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":1,\r\n    \"name\":\"location Name\",\r\n    \"locationType\":1,\r\n    \"status\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/location",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET LOCATION BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/location/3",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"location",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE LOCATION",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\":1,\r\n    \"name\":\"location Name update\",\r\n    \"locationType\":1,\r\n    \"status\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/location/3",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"location",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TWO MASTER",
+			"item": [
+				{
+					"name": "GET TWO MASTER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/twoFieldMaster",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"twoFieldMaster"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save TWO MASTER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"TWO MASTER NAME\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/twoFieldMaster",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"twoFieldMaster"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET TWO MASTER BY ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/twoFieldMaster/2",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"twoFieldMaster",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDAT TWO MASTER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"updating the name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/twoFieldMaster/2",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"twoFieldMaster",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET TWO MASTER DETAILS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/twoFieldMasterDetails",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"twoFieldMasterDetails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE TWO MASTER DETAILS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"save two master 1 \",\r\n    \"twoFieldMaster\": {\r\n        \"id\":1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/twoFieldMasterDetails",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"twoFieldMasterDetails"
 							]
 						}
 					},
