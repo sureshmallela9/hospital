@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.hospital.model.RiskAssement;
 
 @RepositoryRestResource(collectionResourceRel = "riskAssement", path = "riskAssement")
-@CrossOrigin("*")
 public interface RiskAssementRepository extends CrudRepository<RiskAssement, Long> {
     public RiskAssement findById(long id);
     public List<RiskAssement> findAll();

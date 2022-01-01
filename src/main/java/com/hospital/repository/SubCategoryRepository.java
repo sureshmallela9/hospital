@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.hospital.model.SubCategory;
 
 @RepositoryRestResource(collectionResourceRel = "subCategory", path = "subCategory")
-@CrossOrigin("*")
 public interface SubCategoryRepository extends CrudRepository<SubCategory, Long> {
     public SubCategory findById(int id);
     public Set<SubCategory> findAll();

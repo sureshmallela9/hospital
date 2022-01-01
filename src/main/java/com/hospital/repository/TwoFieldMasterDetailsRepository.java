@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.hospital.model.TwoFieldMasterDetails;
 
 @RepositoryRestResource(collectionResourceRel = "twoFieldMasterDetails", path = "twoFieldMasterDetails")
-@CrossOrigin("*")
 public interface TwoFieldMasterDetailsRepository extends CrudRepository<TwoFieldMasterDetails, Long> {
     public TwoFieldMasterDetails findById(long id);
     public List<TwoFieldMasterDetails> findAll();

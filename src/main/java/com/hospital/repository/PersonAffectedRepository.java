@@ -7,6 +7,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.hospital.model.PersonAffected;
 
 @RepositoryRestResource(collectionResourceRel = "personAffected", path = "personAffected")
-@CrossOrigin("*")
 public interface PersonAffectedRepository extends CrudRepository<PersonAffected, Long> {
 }
