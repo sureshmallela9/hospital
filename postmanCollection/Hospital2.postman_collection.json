@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bb7faa53-840e-4286-b71d-6292977c346b",
+		"_postman_id": "414f1f60-bdd5-41bd-9cf0-9e4193c655c4",
 		"name": "Hospital",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -41,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"sub Category 2 \",\r\n    \"template\":100,\r\n    \"category\": {\r\n        \"id\":1\r\n    }\r\n}",
+							"raw": "{\r\n    \"name\": \"sub Category 2 \",\r\n    \"template\":100,\r\n    \"sentinel\": true,\r\n    \"reportable\": false,\r\n    \"category\": {\r\n        \"id\":1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -168,7 +168,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"First Person Affected\"\r\n}",
+							"raw": "{\r\n    \"name\": \"First Person Affected\",\r\n    \"show\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -362,15 +362,39 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:1000/contributingFactorDetails/2",
-							"protocol": "http",
+							"raw": "{{path}}/contributingFactorDetails/2",
 							"host": [
-								"localhost"
+								"{{path}}"
 							],
-							"port": "1000",
 							"path": [
 								"contributingFactorDetails",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE CF",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"CF NAME\",\r\n        \"show\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/contributingFactors",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"contributingFactors"
 							]
 						}
 					},
@@ -429,7 +453,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"RCA NAME 2\"\r\n}",
+							"raw": "{\r\n    \"name\": \"RCA NAME 2\",\r\n    \"show\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -437,15 +461,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://139.59.44.254:8080/rca",
-							"protocol": "http",
+							"raw": "{{path}}/rca",
 							"host": [
-								"139",
-								"59",
-								"44",
-								"254"
+								"{{path}}"
 							],
-							"port": "8080",
 							"path": [
 								"rca"
 							]
@@ -809,7 +828,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"save two master 1 \",\r\n    \"twoFieldMaster\": {\r\n        \"id\":1\r\n    }\r\n}",
+							"raw": "{\r\n    \"name\": \"save two master 1 \",\r\n    \"showToggle\": true,\r\n    \"twoFieldMaster\": {\r\n        \"id\":1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

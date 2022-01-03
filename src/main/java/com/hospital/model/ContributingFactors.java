@@ -32,6 +32,8 @@ public class ContributingFactors {
     @Column(nullable = false)
     private String name;
 
+    private boolean show;
+
     @OneToMany(mappedBy = "contributingFactors")
     @RestResource(exported = false)
     private List<ContributingFactorDetails> contributingFactorDetails;

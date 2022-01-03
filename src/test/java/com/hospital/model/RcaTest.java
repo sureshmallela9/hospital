@@ -12,6 +12,7 @@ public class RcaTest {
 
     public static final String NAME = "categoryName";
     public static final Long ID = 1L;
+    public static final boolean show = true;
     private Rca rca;
     private RcaCauses rcaCauses;
     private List<RcaCauses> rcaCausesList;
@@ -23,6 +24,7 @@ public class RcaTest {
         rcaCausesList = new ArrayList<>();
         rca.setId(ID);
         rca.setName(NAME);
+        rca.setShow(show);
         rcaCauses.setId(ID);
         rcaCauses.setName(NAME);
         rcaCausesList.add(rcaCauses);
@@ -41,6 +43,7 @@ public class RcaTest {
         assertEquals(ID, rca.getId());
         assertEquals(ID, rcaCauses.getId());
         assertEquals(NAME, rcaCauses.getName());
+        assertEquals(show, rca.isShow());
         assert rca.getRcaCauses() != null;
     }
 }

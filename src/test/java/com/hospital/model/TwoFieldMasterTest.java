@@ -13,6 +13,7 @@ public class TwoFieldMasterTest {
 
     public static final String NAME = "testName";
     public static final Long ID = 1L;
+    public static final boolean showToggole = true;
     private TwoFieldMaster twoFieldMaster;
     private TwoFieldMasterDetails twoFieldMasterDetails;
     private List<TwoFieldMasterDetails> twoFieldMasterDetailsList;
@@ -24,6 +25,7 @@ public class TwoFieldMasterTest {
         twoFieldMasterDetailsList = new ArrayList<>();
         twoFieldMaster.setId(ID);
         twoFieldMaster.setName(NAME);
+        twoFieldMasterDetails.setShowToggle(showToggole);
         twoFieldMasterDetails.setId(ID);
         twoFieldMasterDetails.setName(NAME);
         twoFieldMasterDetails.setTwoFieldMaster(twoFieldMaster);
@@ -43,6 +45,7 @@ public class TwoFieldMasterTest {
         assertEquals(ID, twoFieldMaster.getId());
         assertEquals(ID, twoFieldMasterDetails.getId());
         assertEquals(NAME, twoFieldMasterDetails.getName());
+        assertEquals(showToggole, twoFieldMasterDetails.isShowToggle());
         assert twoFieldMaster.getTwoFieldMasterDetails() != null;
     }
 

@@ -37,6 +37,12 @@ public class SubCategory {
 
     private int template;
 
+    private boolean sentinel;
+
+    private boolean reportable;
+
+    private boolean status;
+
     @ManyToOne
     @RestResource(exported = false)
     @JoinColumn(name = "category_id")

@@ -32,6 +32,8 @@ public class PersonAffected {
     @Column(nullable = false)
     private String name;
 
+    private boolean show;
+
     @OneToMany(mappedBy = "personAffected")
     @RestResource(exported = false)
     private List<PersonAffectedDetails> personAffectedDetails;

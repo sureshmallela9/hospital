@@ -14,6 +14,7 @@ public class SubCategoryTest {
     public static final String NAME = "categoryName";
     public static final Long ID = 1L;
     public static final int TEMPLATE = 1;
+    public static final Boolean STATUS = true;
     private SubCategory subCategory;
     private Category category;
 
@@ -25,6 +26,9 @@ public class SubCategoryTest {
         category.setName(NAME);
         subCategory.setId(ID);
         subCategory.setName(NAME);
+        subCategory.setSentinel(STATUS);
+        subCategory.setStatus(STATUS);
+        subCategory.setReportable(STATUS);
         subCategory.setTemplate(TEMPLATE);
         subCategory.setCategory(category);
     }
@@ -40,6 +44,9 @@ public class SubCategoryTest {
         assertEquals(NAME, category.getName());
         assertEquals(ID, category.getId());
         assertEquals(ID, subCategory.getId());
+        assertEquals(STATUS, subCategory.isReportable());
+        assertEquals(STATUS, subCategory.isSentinel());
+        assertEquals(STATUS, subCategory.isStatus());
         assertEquals(NAME, subCategory.getName());
         assertEquals(TEMPLATE, subCategory.getTemplate());
         assert subCategory.getCategory() != null;

@@ -1,5 +1,6 @@
 package com.hospital.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,5 +27,6 @@ public class RiskAssement {
     private String color;
     private String template;
     private boolean status;
+    private boolean show;
 
 }

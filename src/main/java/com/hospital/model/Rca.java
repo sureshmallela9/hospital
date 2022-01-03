@@ -3,6 +3,7 @@ package com.hospital.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,6 +32,8 @@ public class Rca {
     private Long id;
 
     private String name;
+
+    private boolean show;
 
     @OneToMany(mappedBy = "rca")
     @RestResource(exported = false)

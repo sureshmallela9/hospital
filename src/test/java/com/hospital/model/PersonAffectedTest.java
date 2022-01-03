@@ -15,6 +15,7 @@ public class PersonAffectedTest {
 
     public static final String NAME = "categoryName";
     public static final Long ID = 1L;
+    public static final boolean show = true;
     private PersonAffectedDetails personAffectedDetails;
     private PersonAffected personAffected;
     private List<PersonAffectedDetails> pfList;
@@ -26,6 +27,7 @@ public class PersonAffectedTest {
         pfList = new ArrayList<>();
         personAffected.setPa_id(ID);
         personAffected.setName(NAME);
+        personAffected.setShow(show);
         personAffectedDetails.setId(ID);
         personAffectedDetails.setName(NAME);
         pfList.add(personAffectedDetails);
@@ -41,6 +43,7 @@ public class PersonAffectedTest {
     @Test
     public void testSubCategoryDetails() throws Exception {
         assertEquals(NAME, personAffected.getName());
+        assertEquals(show, personAffected.isShow());
         assertEquals(ID, personAffected.getPa_id());
         assertEquals(ID, personAffectedDetails.getId());
         assertEquals(NAME, personAffectedDetails.getName());

@@ -1,5 +1,6 @@
 package com.hospital.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -33,6 +34,8 @@ public class TwoFieldMasterDetails {
     private Long id;
 
     private String name;
+
+    private boolean showToggle;
 
     @ManyToOne
     @JoinColumn(name = "twoFieldMaster_id", nullable = true)

@@ -13,6 +13,7 @@ public class ContributingFactorTest {
 
     public static final String NAME = "testName";
     public static final Long ID = 1L;
+    public static final boolean show = true;
     private ContributingFactors contribuingFactors;
     private ContributingFactorDetails cfDetails;
     private List<ContributingFactorDetails> cfDetailsList;
@@ -24,6 +25,7 @@ public class ContributingFactorTest {
         cfDetailsList = new ArrayList<>();
         contribuingFactors.setCf_id(ID);
         contribuingFactors.setName(NAME);
+        contribuingFactors.setShow(show);
         cfDetails.setId(ID);
         cfDetails.setName(NAME);
         cfDetails.setContributingFactors(contribuingFactors);
@@ -41,6 +43,7 @@ public class ContributingFactorTest {
     public void testContributingFactor() throws Exception {
         assertEquals(NAME, contribuingFactors.getName());
         assertEquals(ID, contribuingFactors.getCf_id());
+        assertEquals(show, contribuingFactors.isShow());
         assertEquals(ID, cfDetails.getId());
         assertEquals(NAME, cfDetails.getName());
         assert contribuingFactors.getContributingFactorDetails() != null;

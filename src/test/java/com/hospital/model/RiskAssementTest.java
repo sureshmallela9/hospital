@@ -13,6 +13,7 @@ public class RiskAssementTest {
     public static final int RISKSCORE = 1;
     public static final int RISKSTATUS = 1;
     public static final String TEMPLATE = "temp";
+    public static final boolean show = true;
     public static final String COLOR = "color";
     public static final Boolean STATUS = true;
     public static final Long ID = 1L;
@@ -23,6 +24,7 @@ public class RiskAssementTest {
         riskAssement = new RiskAssement();
         riskAssement.setId(ID);
         riskAssement.setColor(COLOR);
+        riskAssement.setShow(show);
         riskAssement.setLikelihood(LIKELIHOOD);
         riskAssement.setServerity(SERVERITY);
         riskAssement.setTemplate(TEMPLATE);
@@ -42,6 +44,7 @@ public class RiskAssementTest {
     public void testUserDetails() throws Exception {
         assertEquals(ID, riskAssement.getId());
         assertEquals(COLOR, riskAssement.getColor());
+        assertEquals(show, riskAssement.isShow());
         assertEquals(LIKELIHOOD, riskAssement.getLikelihood());
         assertEquals(SERVERITY, riskAssement.getServerity());
         assertEquals(TEMPLATE, riskAssement.getTemplate());
