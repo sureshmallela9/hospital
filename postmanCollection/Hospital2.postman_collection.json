@@ -975,6 +975,110 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Get USER PERMISSIONS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/hospital/userPermission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"hospital",
+								"userPermission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SAVE USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"test@email.com\",\r\n    \"userName\":\"userName\",\r\n    \"password\":\"password\",\r\n    \"firstName\":\"firstName\",\r\n    \"lastName\":\"lastName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1000/hospital/saveUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"hospital",
+								"saveUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save User Permissioin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"permission\":\"permission name\",\r\n    \"user\":{\r\n        \"id\":1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1000/hospital/userPermission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"hospital",
+								"userPermission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Permission By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1000/hospital/userPermission/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1000",
+							"path": [
+								"hospital",
+								"userPermission",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
