@@ -23,7 +23,7 @@ public class UserPermissionTest {
         user = new User();
         userPermission.setId(ID);
         userPermission.setPermission(NAME);
-        user.setId(number);
+        user.setId(ID);
         userPermission.setUser(user);
     }
 

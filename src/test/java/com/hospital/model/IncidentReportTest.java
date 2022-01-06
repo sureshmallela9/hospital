@@ -36,7 +36,7 @@ public class IncidentReportTest {
         incidentReport.setLocation(numberValue);
         incidentReport.setLocationDetailsEntry(stringValue);
         incidentReport.setPatientYesOrNo(booleanValue);
-        incidentReport.setPatientname(numberValue);
+        incidentReport.setPatientname(stringValue);
         incidentReport.setTypeofInci(numberValue);
         incidentReport.setInciCateg(numberValue);
         incidentReport.setInciSubCat(numberValue);
@@ -60,7 +60,7 @@ public class IncidentReportTest {
         assertEquals(ID, incidentReport.getId());
         assertEquals(stringValue, incidentReport.getLocationDetailsEntry());
         assertEquals(booleanValue, incidentReport.getPatientYesOrNo());
-        assertEquals(numberValue, incidentReport.getPatientname());
+        assertEquals(stringValue, incidentReport.getPatientname());
         assertEquals(date, incidentReport.getComplaintDatetime());
         assertEquals(stringValue, incidentReport.getComplaintIdEntry());
         assertEquals(numberValue, incidentReport.getTypeofInci());

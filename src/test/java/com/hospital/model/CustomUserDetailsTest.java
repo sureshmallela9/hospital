@@ -17,9 +17,8 @@ public class CustomUserDetailsTest {
     @BeforeEach
     public void setUp() throws Exception {
         user = new User();
-        user.setUserName("testUser");
+        user.setName("testUser");
         user.setEmail("eamil@com");
-        user.setFirstName("First Name");
         user.setPassword("test password");
         customUserDetails = new CustomUserDetails(user);
     }
@@ -35,7 +34,6 @@ public class CustomUserDetailsTest {
         assert customUserDetails.getAuthorities() == null;
         assert customUserDetails.getPassword() != null;
         assert customUserDetails.getUsername() != null;
-        assert customUserDetails.getFullName() != null;
         assert customUserDetails.isAccountNonExpired();
         assert customUserDetails.isAccountNonLocked();
         assert customUserDetails.isCredentialsNonExpired();

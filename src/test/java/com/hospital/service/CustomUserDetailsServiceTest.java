@@ -28,13 +28,11 @@ public class CustomUserDetailsServiceTest {
     @Test
     void loadUserByUsernameTest() throws Exception {
         User user = new User();
-        user.setId(1);
-        user.setUserName("testUser");
+        user.setId(1L);
+        user.setName("testUser");
         user.setEmail("test@email.com");
-        user.setFirstName("fname");
-        user.setLastName("lname");
         user.setPassword("test");
-        when(userRepo.findByUserName(user.getUserName())).thenReturn(user);
+        when(userRepo.findByUserName(user.getName())).thenReturn(user);
         UserDetails userDetails = customUserDetailsService.loadUserByUsername("testUser");
         System.out.println("userDetails :"+userDetails);
         assert userDetails != null;

@@ -1,5 +1,7 @@
 package com.hospital.model;
 
+import java.util.Date;
+
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,21 +14,14 @@ public class User {
      
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(nullable = false, unique = true, length = 45)
+    private Long id;
+    private String name;
+    private String gender;
+    private Date dob;
+    private String employeeId;
+    private String contact;
     private String email;
-
-    @Column(nullable = false, unique = true, length = 45)
-    private String userName;
-
-    @Column(nullable = false, length = 64)
+    private int department;
+    private int role;
     private String password;
-
-    @Column(name = "first_name", nullable = false, length = 20)
-    private String firstName;
-
-    @Column(name = "last_name", nullable = false, length = 20)
-    private String lastName;
-
 }

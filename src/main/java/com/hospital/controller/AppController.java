@@ -18,7 +18,6 @@ import com.hospital.model.User;
 import com.hospital.repository.UserRepository;
  
 @RestController
-@CrossOrigin("*")
 public class AppController {
  
     @Autowired

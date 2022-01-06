@@ -2,11 +2,19 @@ package com.hospital.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.rest.core.annotation.RestResource;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +38,7 @@ public class IncidentReport {
 
     private Boolean PatientYesOrNo;
 
-    private int Patientname;
+    private String Patientname;
 
     private Date ComplaintDatetime;
 
@@ -69,5 +77,9 @@ public class IncidentReport {
     private int HeadofDepart;
 
     private String Sequence;
+    
+    private String status;
 
+    @CreationTimestamp
+    private Date reportingDate = new java.sql.Date(new java.util.Date().getTime());
 }

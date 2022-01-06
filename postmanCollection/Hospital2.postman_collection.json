@@ -973,6 +973,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "INCIDENT SEARCH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/IncidentReport/search/byDetails?Patientname=100&InciDescription=inciDescription",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"IncidentReport",
+								"search",
+								"byDetails"
+							],
+							"query": [
+								{
+									"key": "Patientname",
+									"value": "100"
+								},
+								{
+									"key": "InciDescription",
+									"value": "inciDescription"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -985,44 +1014,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:1000/hospital/userPermission",
-							"protocol": "http",
+							"raw": "{{path}}/userPermission",
 							"host": [
-								"localhost"
+								"{{path}}"
 							],
-							"port": "1000",
 							"path": [
-								"hospital",
 								"userPermission"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SAVE USER",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"email\":\"test@email.com\",\r\n    \"userName\":\"userName\",\r\n    \"password\":\"password\",\r\n    \"firstName\":\"firstName\",\r\n    \"lastName\":\"lastName\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:1000/hospital/saveUser",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "1000",
-							"path": [
-								"hospital",
-								"saveUser"
 							]
 						}
 					},
@@ -1043,14 +1040,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:1000/hospital/userPermission",
-							"protocol": "http",
+							"raw": "{{path}}/userPermission",
 							"host": [
-								"localhost"
+								"{{path}}"
 							],
-							"port": "1000",
 							"path": [
-								"hospital",
 								"userPermission"
 							]
 						}
@@ -1063,16 +1057,140 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:1000/hospital/userPermission/1",
-							"protocol": "http",
+							"raw": "{{path}}/userPermission/1",
 							"host": [
-								"localhost"
+								"{{path}}"
 							],
-							"port": "1000",
 							"path": [
-								"hospital",
 								"userPermission",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/user",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"suresh mallela\",\r\n    \"gender\":\"M\",\r\n    \"dob\":\"1994-12-08\",\r\n    \"employeeId\":\"2023\",\r\n    \"contact\":\"9160030216\",\r\n    \"email\":\"sureshmallela9@gmail.com\",\r\n    \"department\":1,\r\n    \"role\":1,\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/user",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By UserID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/user/1",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "Get Department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/department",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Department",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"departmentName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/department",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"department"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Department ByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/department/2",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"department",
+								"2"
 							]
 						}
 					},

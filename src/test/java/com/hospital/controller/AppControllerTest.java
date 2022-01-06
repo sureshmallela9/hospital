@@ -35,28 +35,24 @@ public class AppControllerTest {
     void findAllUserDetailsTest() throws Exception {
         List<User> userList = new ArrayList<>();
         User user = new User();
-        user.setId(1);
-        user.setUserName("testUser");
+        user.setId(1L);
+        user.setName("testUser");
         user.setEmail("test@email.com");
-        user.setFirstName("fname");
-        user.setLastName("lname");
         userList.add(user);
         user.setPassword("test");
         when(userRepo.findAll()).thenReturn(userList);
         mockMvc.perform(get("/userDetails"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].userName").value("testUser"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("testUser"));
     }
 
     @Test
     void saveUserTest() throws Exception {
         User user = new User();
-        user.setId(1);
-        user.setUserName("testUser");
+        user.setId(1L);
+        user.setName("testUser");
         user.setEmail("test@email.com");
-        user.setFirstName("fname");
-        user.setLastName("lname");
         user.setPassword("test");
         mockMvc.perform(post("/saveUser")
                 .content(asJsonString(user))
