@@ -1,6 +1,7 @@
 package com.hospital.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.NotFound;
@@ -39,7 +41,7 @@ public class SubCategory {
 
     private boolean sentinel;
 
-    private boolean reportable;
+//    private boolean reportable;
 
     private boolean status;
 
@@ -53,4 +55,12 @@ public class SubCategory {
         return category;
     }
 
+    @OneToMany(mappedBy = "subCategory")
+    @RestResource(exported = false)
+    private Set<Reportable> reportable;
+
+    @JsonManagedReference
+    public Set<Reportable> getReportable() {
+        return reportable;
+    }
 }

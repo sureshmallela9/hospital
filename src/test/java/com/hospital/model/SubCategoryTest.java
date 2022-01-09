@@ -28,7 +28,7 @@ public class SubCategoryTest {
         subCategory.setName(NAME);
         subCategory.setSentinel(STATUS);
         subCategory.setStatus(STATUS);
-        subCategory.setReportable(STATUS);
+//        subCategory.setReportable(STATUS);
         subCategory.setTemplate(TEMPLATE);
         subCategory.setCategory(category);
     }
@@ -44,7 +44,7 @@ public class SubCategoryTest {
         assertEquals(NAME, category.getName());
         assertEquals(ID, category.getId());
         assertEquals(ID, subCategory.getId());
-        assertEquals(STATUS, subCategory.isReportable());
+//        assertEquals(STATUS, subCategory.isReportable());
         assertEquals(STATUS, subCategory.isSentinel());
         assertEquals(STATUS, subCategory.isStatus());
         assertEquals(NAME, subCategory.getName());
