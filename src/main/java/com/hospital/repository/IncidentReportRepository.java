@@ -23,4 +23,7 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
             @Param("Patientname") String Patientname,
             @Param("InciDescription") String InciDescription,
             @Param("status") String status);
+    
+    @Query("SELECT max(ch.id) FROM IncidentReport ch")
+    Long getMaxId();
 }

@@ -5,23 +5,35 @@ import java.util.stream.Collectors;
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
+import com.hospital.listener.IncidentReportListener;
+
 @Configuration
-<span class="fc" id="L14">public class RestConfig implements RepositoryRestConfigurer {</span>
+public class RestConfig implements RepositoryRestConfigurer {
 
     @Autowired
     private EntityManager entityManager;
 
+    public RestConfig(){
+<span class="nc" id="L23">        super();</span>
+<span class="nc" id="L24">    }</span>
+
+    @Bean
+    IncidentReportListener incidentReportListener() {
+<span class="nc" id="L28">        return new IncidentReportListener();</span>
+    }
+
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-<span class="fc" id="L21">        System.out.println(&quot;List of Entitys&quot; +entityManager.getMetamodel().getEntities().stream().map(e -&gt; e.getJavaType()).collect(Collectors.toList()));</span>
-<span class="fc" id="L22">        config.exposeIdsFor(entityManager.getMetamodel().getEntities().stream().map(e -&gt; e.getJavaType()).collect(Collectors.toList()).toArray(new Class[0]));</span>
-<span class="fc" id="L23">        cors.addMapping(&quot;/**&quot;).allowCredentials(false).allowedOrigins(&quot;*&quot;).allowedMethods(&quot;PUT&quot;, &quot;POST&quot;, &quot;GET&quot;, &quot;OPTIONS&quot;, &quot;DELETE&quot;).allowedHeaders(&quot;*&quot;);</span>
-<span class="fc" id="L24">    }</span>
+<span class="nc" id="L33">        System.out.println(&quot;List of Entitys&quot; +entityManager.getMetamodel().getEntities().stream().map(e -&gt; e.getJavaType()).collect(Collectors.toList()));</span>
+<span class="nc" id="L34">        config.exposeIdsFor(entityManager.getMetamodel().getEntities().stream().map(e -&gt; e.getJavaType()).collect(Collectors.toList()).toArray(new Class[0]));</span>
+<span class="nc" id="L35">        cors.addMapping(&quot;/**&quot;).allowCredentials(false).allowedOrigins(&quot;*&quot;).allowedMethods(&quot;PUT&quot;, &quot;POST&quot;, &quot;GET&quot;, &quot;OPTIONS&quot;, &quot;DELETE&quot;).allowedHeaders(&quot;*&quot;);</span>
+<span class="nc" id="L36">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

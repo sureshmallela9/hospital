@@ -6,13 +6,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class HospitalApplicationTests {
 
-    @Test
+/*    @Test
     void contextLoads() {
     }
 
     @Test
     public void main() {
         HospitalApplication.main(new String[] {});
-    }
+    } */
 
 }

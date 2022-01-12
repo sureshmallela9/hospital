@@ -4,24 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import com.hospital.model.CustomUserDetails;
 import com.hospital.model.User;
 import com.hospital.repository.UserRepository;
- 
-<span class="fc" id="L12">public class CustomUserDetailsService implements UserDetailsService {</span>
+
+//@Service(&quot;userDetailsService&quot;)
+<span class="nc" id="L14">public class CustomUserDetailsService implements UserDetailsService {</span>
  
     @Autowired
     private UserRepository userRepo;
      
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-<span class="fc" id="L19">    	System.out.println(&quot;loadUserByUsername&quot;);</span>
-<span class="fc" id="L20">        User user = userRepo.findByUserName(username);</span>
-<span class="fc bfc" id="L21" title="All 2 branches covered.">        if (user == null) {</span>
-<span class="fc" id="L22">            throw new UsernameNotFoundException(&quot;User not found EX&quot;);</span>
+<span class="nc" id="L21">    	System.out.println(&quot;loadUserByUsername&quot;);</span>
+<span class="nc" id="L22">        User user = userRepo.findByUserName(username);</span>
+<span class="nc bnc" id="L23" title="All 2 branches missed.">        if (user == null) {</span>
+<span class="nc" id="L24">            throw new UsernameNotFoundException(&quot;User not found EX&quot;);</span>
         }
-<span class="fc" id="L24">        return new CustomUserDetails(user);</span>
+<span class="nc" id="L26">        return new CustomUserDetails(user);</span>
     }
  
 }

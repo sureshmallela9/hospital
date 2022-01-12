@@ -163,7 +163,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"report_to\":10,\r\n    \"reporting_instructions\":\"reporting_instructions\",\r\n    \"subCategory\":{\r\n        \"id\":9\r\n    }\r\n}",
+							"raw": "{\r\n    \"report_to\":10,\r\n    \"reporting_instructions\":\"reporting_instructions\",\r\n    \"subCategory\":{\r\n        \"id\":12\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -171,14 +171,11 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:1000/hospital/reportable",
-							"protocol": "http",
+							"raw": "{{path}}/reportable",
 							"host": [
-								"localhost"
+								"{{path}}"
 							],
-							"port": "1000",
 							"path": [
-								"hospital",
 								"reportable"
 							]
 						}

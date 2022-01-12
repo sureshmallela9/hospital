@@ -16,33 +16,33 @@ import com.hospital.service.CustomUserDetailsService;
  
 @Configuration
 @EnableWebSecurity
-<span class="fc" id="L19">public class WebSecurityConfig extends WebSecurityConfigurerAdapter {</span>
+<span class="nc" id="L19">public class WebSecurityConfig extends WebSecurityConfigurerAdapter {</span>
     @Bean
     public UserDetailsService userDetailsService() {
-<span class="fc" id="L22">    	System.out.println(&quot;called... userDetailsService&quot;);</span>
-<span class="fc" id="L23">        return new CustomUserDetailsService();</span>
+<span class="nc" id="L22">    	System.out.println(&quot;called... userDetailsService&quot;);</span>
+<span class="nc" id="L23">        return new CustomUserDetailsService();</span>
     }
      
     @Bean
     public PasswordEncoder  passwordEncoder() {
-<span class="fc" id="L28">    	System.out.println(&quot;called... passwordEncoder&quot;);</span>
+<span class="nc" id="L28">    	System.out.println(&quot;called... passwordEncoder&quot;);</span>
         //return new BCryptPasswordEncoder();
-<span class="fc" id="L30">    	return NoOpPasswordEncoder.getInstance();</span>
+<span class="nc" id="L30">    	return NoOpPasswordEncoder.getInstance();</span>
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-<span class="fc" id="L35">        auth</span>
-<span class="fc" id="L36">            .userDetailsService(userDetailsService())</span>
-<span class="fc" id="L37">            .passwordEncoder(passwordEncoder());</span>
-<span class="fc" id="L38">    }</span>
+<span class="nc" id="L35">        auth</span>
+<span class="nc" id="L36">            .userDetailsService(userDetailsService())</span>
+<span class="nc" id="L37">            .passwordEncoder(passwordEncoder());</span>
+<span class="nc" id="L38">    }</span>
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-<span class="fc" id="L42">        http.authorizeRequests()</span>
-<span class="fc" id="L43">            .antMatchers(&quot;/**&quot;).permitAll();</span>
-<span class="fc" id="L44">        http.csrf().disable();</span>
-<span class="fc" id="L45">        super.configure(http);</span>
-<span class="fc" id="L46">    }</span>
+<span class="nc" id="L42">        http.authorizeRequests()</span>
+<span class="nc" id="L43">            .antMatchers(&quot;/**&quot;).permitAll();</span>
+<span class="nc" id="L44">        http.csrf().disable();</span>
+<span class="nc" id="L45">        super.configure(http);</span>
+<span class="nc" id="L46">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
