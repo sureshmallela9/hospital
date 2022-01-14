@@ -38,6 +38,7 @@ public class IncidentReport {
 
     private String LocationDetailsEntry;
 
+    @Column(nullable = true)
     private Boolean PatientYesOrNo;
 
     private String Patientname;
@@ -66,12 +67,16 @@ public class IncidentReport {
 
     private int Preventability;
 
+    @Column(nullable = true)
     private Boolean action;
 
+    @Column(nullable = true)
     private Boolean witness;
 
+    @Column(nullable = true)
     private Boolean IncidentNotification;
 
+    @Column(nullable = true)
     private Boolean Upload;
 
     private int IncidentReportedDept;

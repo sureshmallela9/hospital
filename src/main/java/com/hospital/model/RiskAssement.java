@@ -26,7 +26,9 @@ public class RiskAssement {
     private int riskstatus;
     private String color;
     private String template;
+    @Column(nullable = true)
     private boolean status;
+    @Column(nullable = true)
     private boolean show;
 
 }

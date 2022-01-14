@@ -25,7 +25,7 @@ public class CustomUserDetailsServiceTest {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-/*    @Test
+    @Test
     void loadUserByUsernameTest() throws Exception {
         User user = new User();
         user.setId(1L);
@@ -48,5 +48,5 @@ public class CustomUserDetailsServiceTest {
                 thrown = true;
         }
         assertTrue(thrown);
-    }*/
+    }
 }

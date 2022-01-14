@@ -35,6 +35,7 @@ public class TwoFieldMasterDetails {
 
     private String name;
 
+    @Column(nullable = true)
     private boolean showToggle;
 
     @ManyToOne

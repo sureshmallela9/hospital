@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hospital.model.User;
-import com.hospital.model.UserRequest;
-import com.hospital.model.UserResponse;
+/*import com.hospital.model.UserRequest;
+import com.hospital.model.UserResponse;*/
 import com.hospital.repository.UserRepository;
-import com.hospital.utils.JwtUtil;
+//import com.hospital.utils.JwtUtil;
  
 @RestController
 public class AppController {
@@ -31,12 +31,13 @@ public class AppController {
 	/*
 	 * @Autowired private AuthenticationManager authenticationManager;
 	 */
+	/*
+	 * @Autowired private JwtUtil jwtUtil;
+	 */
     
-    @Autowired
-    private JwtUtil jwtUtil;
-    
-    @Autowired
-    private BCryptPasswordEncoder pwdEncoder;
+	/*
+	 * @Autowired private BCryptPasswordEncoder pwdEncoder;
+	 */
 
     @GetMapping(path = "/userDetails", produces=MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<User> findAllUserDetails() {
@@ -45,8 +46,8 @@ public class AppController {
 
     @PostMapping("/saveUser" )
     public User saveUser(@RequestBody User user) {
-        String encodedPassword = pwdEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
+        //String encodedPassword = pwdEncoder.encode(user.getPassword());
+       // user.setPassword(encodedPassword);
         User userresp = userRepo.save(user);
         return userresp;
     }

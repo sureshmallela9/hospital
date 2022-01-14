@@ -31,7 +31,7 @@ public class AppControllerTest {
     @MockBean
     private UserRepository userRepo;
 
-/*    @Test
+    @Test
     void findAllUserDetailsTest() throws Exception {
         List<User> userList = new ArrayList<>();
         User user = new User();
@@ -58,7 +58,7 @@ public class AppControllerTest {
                 .content(asJsonString(user))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }*/
+    }
     public static String asJsonString(final Object obj) {
         try {
             final ObjectMapper mapper = new ObjectMapper();

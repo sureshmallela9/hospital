@@ -2,6 +2,7 @@ package com.hospital.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,10 +35,13 @@ public class SubCategory {
 
     private int template;
 
+    @Column(nullable = true)
     private boolean sentinel;
 
+    @Column(nullable = true)
     private boolean reportStatus;
 
+    @Column(nullable = true)
     private boolean status;
 
     @ManyToOne

@@ -31,6 +31,7 @@ public class PersonAffectedDetails {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = true)
     private boolean show;
 
     @ManyToOne

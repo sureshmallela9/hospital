@@ -1,4 +1,4 @@
-package com.hospital.utils;
+/*package com.hospital.utils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -67,4 +67,4 @@ public class JwtUtil {
                 .compact();
     }
 
-}
+}*/
