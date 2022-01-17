@@ -931,7 +931,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"action\": true,\r\n    \"witness\": true,\r\n    \"template\": 200,\r\n    \"deptsLookupMultiselect\": \"deptsLookupMultiselect\",\r\n    \"incident_Date_Time\": \"2017-01-23\",\r\n    \"incidentNotification\": true,\r\n    \"complaintIdEntry\": \"complaintIdEntry\",\r\n    \"locationDetailsEntry\": \"locationDetailsEntry\",\r\n    \"incidentReportedDept\": 0,\r\n    \"contribFactorYesOrNo\": true,\r\n    \"complaintDatetime\": \"2017-01-23\",\r\n    \"contribFactor\": 3,\r\n    \"preventability\": 3,\r\n    \"patientYesOrNo\": true,\r\n    \"patientname\": 100,\r\n    \"inciCateg\": 100,\r\n    \"inciSubCat\": 100,\r\n    \"personAffected\": true,\r\n    \"inciDescription\": \"inciDescription\",\r\n    \"typeofInci\": 100,\r\n    \"headofDepart\": 0,\r\n    \"sequence\": \"sequence\",\r\n    \"upload\": true,\r\n    \"location\": 100\r\n}",
+							"raw": "{\r\n    \"action\": true,\r\n    \"witness\": true,\r\n    \"template\": 200,\r\n    \"deptsLookupMultiselect\": \"deptsLookupMultiselect\",\r\n    \"incident_Date_Time\": \"2017-01-23\",\r\n    \"incidentNotification\": true,\r\n    \"complaintIdEntry\": \"complaintIdEntry\",\r\n    \"locationDetailsEntry\": \"locationDetailsEntry\",\r\n    \"incidentReportedDept\": 0,\r\n    \"contribFactorYesOrNo\": true,\r\n    \"complaintDatetime\": \"2017-01-23\",\r\n    \"contribFactor\": 3,\r\n    \"preventability\": 3,\r\n    \"patientYesOrNo\": true,\r\n    \"patientname\": 100,\r\n    \"inciCateg\": 100,\r\n    \"inciSubCat\": 100,\r\n    \"personAffected\": true,\r\n    \"inciDescription\": \"inciDescription\",\r\n    \"typeofInci\": 100,\r\n    \"headofDepart\": 0,\r\n    \"upload\": true,\r\n    \"location\": 100\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1234,6 +1234,75 @@
 							"path": [
 								"department",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sequence",
+			"item": [
+				{
+					"name": "{{path}}/sequence",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/sequence",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"sequence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"prefix\":\"IR/\",\r\n    \"irCode\":0,\r\n    \"suffix\":\"NAP\",\r\n    \"period\":\"01/2022\",\r\n    \"staticCode\":\"00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://139.59.44.254:8080/profile/sequence",
+							"protocol": "http",
+							"host": [
+								"139",
+								"59",
+								"44",
+								"254"
+							],
+							"port": "8080",
+							"path": [
+								"profile",
+								"sequence"
 							]
 						}
 					},

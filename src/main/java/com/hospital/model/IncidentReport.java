@@ -86,6 +86,10 @@ public class IncidentReport {
     private String Sequence;
     
     private String status;
+    
+    private String department;
+    
+    private String userDept;
 
     @CreationTimestamp
     private Date reportingDate = new java.sql.Date(new java.util.Date().getTime());

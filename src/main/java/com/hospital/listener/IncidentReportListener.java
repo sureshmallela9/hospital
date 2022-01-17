@@ -38,16 +38,34 @@ public class IncidentReportListener {
         IRCodeConfiguration ircDcument = irc.get(0);
         int nextId = ircDcument.getIrCode();
         nextId = nextId +1;
-        logger.info("Inside incidentReport Before Create....nextId :"+nextId);
-        YearMonth thisMonth = YearMonth.now();
-        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MM/yyyy");
-        String date = thisMonth.format(monthYearFormatter);
-        logger.info("Inside incidentReport Before Create....date :"+date);
+        String date = "";
+        if (ircDcument.getPeriod() != null && ircDcument.getPeriod().equalsIgnoreCase("MM")) {
+            date = getMonth(ircDcument.getPeriod());
+        } else if (ircDcument.getPeriod() != null && ircDcument.getPeriod().equalsIgnoreCase("MM/YYYY")) {
+        	date = getMonthAndYear(ircDcument.getPeriod());
+        }
         incidentReport.setSequence((ircDcument.getStaticCode()+nextId+ircDcument.getPrefix()+date+ircDcument.getSuffix()).trim().toString());
         ircDcument.setIrCode(nextId);
-        ircDcument.setPeriod(date);
         ircDcument.setSequence(incidentReport.getSequence());
         irRepository.save(ircDcument);
+    }
+    
+    private String getMonth(String date) {
+        logger.info("Start getMonthAndYear :"+date);
+        YearMonth thisMonth = YearMonth.now();
+        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MM");
+        date = thisMonth.format(monthYearFormatter);
+        logger.info("end getMonthAndYear :"+date);
+        return date;
+    }
+
+    private String getMonthAndYear(String date) {
+        logger.info("Inside getMonthAndYear :"+date);
+        YearMonth thisMonth = YearMonth.now();
+        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MM/yyyy");
+        date = thisMonth.format(monthYearFormatter);
+        logger.info("Inside incidentReport Before Create....date :"+date);
+        return date;
     }
 
     @HandleAfterCreate
