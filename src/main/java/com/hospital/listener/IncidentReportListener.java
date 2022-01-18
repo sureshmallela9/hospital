@@ -2,7 +2,9 @@ package com.hospital.listener;
 
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sound.midi.Sequence;
 
@@ -32,21 +34,43 @@ public class IncidentReportListener {
     @HandleBeforeCreate
     public void handleIncidentReportBeforeCreate(IncidentReport incidentReport){
         logger.info("Inside incidentReport Before Create....");
-        //001IR/01/2022NAP
-        //006IR/01/2022NAP
+        Map<String, String> seqMap = new HashMap<>();
+        seqMap.put("1", "irCode");
+        seqMap.put("2", "preriod");
+        seqMap.put("3", "prefix");
+        seqMap.put("4", "suffix");
         List<IRCodeConfiguration> irc = irRepository.findAll();
         IRCodeConfiguration ircDcument = irc.get(0);
         int nextId = ircDcument.getIrCode();
         nextId = nextId +1;
-        String date = "";
+        String irCode = ircDcument.getStaticCode() + nextId;
+        String prefix = ircDcument.getPrefix();
+        String suffix = ircDcument.getSuffix();
+        String preriod = "";
         if (ircDcument.getPeriod() != null && ircDcument.getPeriod().equalsIgnoreCase("MM")) {
-            date = getMonth(ircDcument.getPeriod());
+            preriod = getMonth(ircDcument.getPeriod());
         } else if (ircDcument.getPeriod() != null && ircDcument.getPeriod().equalsIgnoreCase("MM/YYYY")) {
-        	date = getMonthAndYear(ircDcument.getPeriod());
+            preriod = getMonthAndYear(ircDcument.getPeriod());
         }
-        incidentReport.setSequence((ircDcument.getStaticCode()+nextId+ircDcument.getPrefix()+date+ircDcument.getSuffix()).trim().toString());
+        String sequence = "";
+        String[] res = ircDcument.getSequence().split(",");
+        for(String myStr: res) {
+            logger.info("sequence split one by one :" +myStr);
+            if (seqMap.get(myStr).equalsIgnoreCase("irCode")) {
+                sequence = sequence + irCode;
+            }
+            if (seqMap.get(myStr).equalsIgnoreCase("preriod")) {
+                sequence = sequence + "/"+preriod;
+            }
+            if (seqMap.get(myStr).equalsIgnoreCase("prefix")) {
+                sequence = sequence + prefix;
+            }
+            if (seqMap.get(myStr).equalsIgnoreCase("suffix")) {
+                sequence = sequence + suffix;
+            }
+        }
+        incidentReport.setSequence(sequence);
         ircDcument.setIrCode(nextId);
-        ircDcument.setSequence(incidentReport.getSequence());
         irRepository.save(ircDcument);
     }
     

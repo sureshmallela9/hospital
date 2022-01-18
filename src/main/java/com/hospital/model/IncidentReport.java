@@ -11,12 +11,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.rest.core.annotation.RestResource;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,9 +27,11 @@ public class IncidentReport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date Incident_Date_Time;
 
-    private int Location;
+    @Column(nullable = true)
+    private Integer Location;
 
     private String LocationDetailsEntry;
 
@@ -43,17 +40,17 @@ public class IncidentReport {
 
     private String Patientname;
 
-    private Date ComplaintDatetime;
+    private Date ComplaIntegerDatetime;
 
-    private String ComplaintIdEntry;
+    private String ComplaIntegerIdEntry;
 
-    private int TypeofInci;
+    private Integer TypeofInci;
 
-    private int InciCateg;
+    private Integer InciCateg;
 
-    private int InciSubCat;
+    private Integer InciSubCat;
 
-    private int Template;
+    private Integer Template;
 
     private Boolean PersonAffected;
 
@@ -63,9 +60,9 @@ public class IncidentReport {
 
     private Boolean ContribFactorYesOrNo;
 
-    private int ContribFactor;
+    private Integer ContribFactor;
 
-    private int Preventability;
+    private Integer Preventability;
 
     @Column(nullable = true)
     private Boolean action;
@@ -78,19 +75,32 @@ public class IncidentReport {
 
     @Column(nullable = true)
     private Boolean Upload;
-
-    private int IncidentReportedDept;
-
-    private int HeadofDepart;
-
+    
+    @Column(nullable = true)
+    private Integer IncidentReportedDept;
+    
+    @Column(nullable = true)
+    private Integer HeadofDepart;
+    
+    @Column(nullable = true)
     private String Sequence;
     
+    @Column(nullable = true)
     private String status;
     
+    @Column(nullable = true)
     private String department;
     
+    @Column(nullable = true)
     private String userDept;
+    
+    @Column(nullable = true)
+    private Integer userId;
+    
+    @Column(nullable = true)
+    private Integer irInvestigator;
 
     @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     private Date reportingDate = new java.sql.Date(new java.util.Date().getTime());
 }

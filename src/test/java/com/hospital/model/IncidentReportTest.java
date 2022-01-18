@@ -23,13 +23,11 @@ public class IncidentReportTest {
         incidentReport = new IncidentReport();
         incidentReport.setId(ID);
         incidentReport.setAction(booleanValue);
-        incidentReport.setComplaintIdEntry(stringValue);
         incidentReport.setHeadofDepart(numberValue);
         incidentReport.setPersonAffected(booleanValue);
         incidentReport.setUpload(booleanValue);
         incidentReport.setIncident_Date_Time(date);
         incidentReport.setContribFactorYesOrNo(booleanValue);
-        incidentReport.setComplaintDatetime(date);
         incidentReport.setDeptsLookupMultiselect(stringValue);
         incidentReport.setContribFactor(numberValue);
         incidentReport.setWitness(booleanValue);
@@ -61,8 +59,6 @@ public class IncidentReportTest {
         assertEquals(stringValue, incidentReport.getLocationDetailsEntry());
         assertEquals(booleanValue, incidentReport.getPatientYesOrNo());
         assertEquals(stringValue, incidentReport.getPatientname());
-        assertEquals(date, incidentReport.getComplaintDatetime());
-        assertEquals(stringValue, incidentReport.getComplaintIdEntry());
         assertEquals(numberValue, incidentReport.getTypeofInci());
         assertEquals(numberValue, incidentReport.getInciCateg());
         assertEquals(numberValue, incidentReport.getInciSubCat());
