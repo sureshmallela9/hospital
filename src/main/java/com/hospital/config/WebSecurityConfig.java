@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -19,13 +18,11 @@ import com.hospital.service.CustomUserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserDetailsService userDetailsService() {
-    	System.out.println("called... userDetailsService");
         return new CustomUserDetailsService();
     }
      
     @Bean
     public PasswordEncoder  passwordEncoder() {
-    	System.out.println("called... passwordEncoder");
         //return new BCryptPasswordEncoder();
     	return NoOpPasswordEncoder.getInstance();
     }

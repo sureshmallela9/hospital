@@ -7,17 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.hospital.model.User;
 import com.hospital.repository.UserRepository;
 
 @WebMvcTest
 public class CustomUserDetailsServiceTest {
-
-
-	@Autowired
-    private MockMvc mockMvc;
  
     @MockBean
     private UserRepository userRepo;

@@ -12,7 +12,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import com.hospital.model.IncidentReport;
 
 @RepositoryRestResource(collectionResourceRel = "IncidentReport", path = "IncidentReport")
@@ -22,8 +21,8 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
 
     @RestResource(path = "byDetails", rel = "customFindMethod")
     @Query("select e from IncidentReport e where " + 
-    		"(:Patientname is null or e.Patientname = :Patientname) and "+
-    		"(:InciDescription is null or e.InciDescription = :InciDescription) and "+
+            "(:department is null or e.department = :department) and "+
+            "(:sequence is null or e.sequence = :sequence) and "+
             "(:status is null or e.status = :status) and"+
             "(:userId is null or e.userId = :userId) and"+
             "(:InciCateg is null or e.InciCateg = :InciCateg) and"+
@@ -34,8 +33,8 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
             "(:fromreportingDate is null or e.reportingDate >= :fromreportingDate)and "+ 
             "(:toreportingDate is null or e.reportingDate <= :toreportingDate)")
     List<IncidentReport> findByPatientnameAndInciDescription(
-            @Param("Patientname") String Patientname,
-            @Param("InciDescription") String InciDescription,
+            @Param("department") String department,
+            @Param("sequence") String sequence,
             @Param("status") String status,
             @Param("userId") Integer userId,
             @Param("InciCateg") Integer InciCateg,

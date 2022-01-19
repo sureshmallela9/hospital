@@ -83,7 +83,7 @@ public class IncidentReport {
     private Integer HeadofDepart;
     
     @Column(nullable = true)
-    private String Sequence;
+    private String sequence;
     
     @Column(nullable = true)
     private String status;
