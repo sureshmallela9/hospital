@@ -22,15 +22,12 @@ public class IncidentReportTest {
     public void setUp() throws Exception {
         incidentReport = new IncidentReport();
         incidentReport.setId(ID);
-        incidentReport.setAction(booleanValue);
         incidentReport.setHeadofDepart(numberValue);
         incidentReport.setPersonAffected(booleanValue);
-        incidentReport.setUpload(booleanValue);
         incidentReport.setIncident_Date_Time(date);
         incidentReport.setContribFactorYesOrNo(booleanValue);
         incidentReport.setDeptsLookupMultiselect(stringValue);
         incidentReport.setContribFactor(numberValue);
-        incidentReport.setWitness(booleanValue);
         incidentReport.setLocation(numberValue);
         incidentReport.setLocationDetailsEntry(stringValue);
         incidentReport.setPatientYesOrNo(booleanValue);
@@ -39,7 +36,6 @@ public class IncidentReportTest {
         incidentReport.setInciCateg(numberValue);
         incidentReport.setInciSubCat(numberValue);
         incidentReport.setPreventability(numberValue);
-        incidentReport.setIncidentNotification(booleanValue);
         incidentReport.setIncidentReportedDept(numberValue);
         incidentReport.setSequence(stringValue);
         incidentReport.setTemplate(numberValue);
@@ -69,10 +65,6 @@ public class IncidentReportTest {
         assertEquals(booleanValue, incidentReport.getContribFactorYesOrNo());
         assertEquals(numberValue, incidentReport.getContribFactor());
         assertEquals(numberValue, incidentReport.getPreventability());
-        assertEquals(booleanValue, incidentReport.getAction());
-        assertEquals(booleanValue, incidentReport.getWitness());
-        assertEquals(booleanValue, incidentReport.getIncidentNotification());
-        assertEquals(booleanValue, incidentReport.getUpload());
         assertEquals(numberValue, incidentReport.getIncidentReportedDept());
         assertEquals(numberValue, incidentReport.getHeadofDepart());
         assertEquals(stringValue, incidentReport.getSequence());

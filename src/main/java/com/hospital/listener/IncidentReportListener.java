@@ -35,38 +35,44 @@ public class IncidentReportListener {
     public void handleIncidentReportBeforeCreate(IncidentReport incidentReport){
         logger.info("Inside incidentReport Before Create....");
         Map<String, String> seqMap = new HashMap<>();
-        seqMap.put("1", "irCode");
+        seqMap.put("3", "irCode");
         seqMap.put("2", "preriod");
-        seqMap.put("3", "prefix");
+        seqMap.put("1", "prefix");
         seqMap.put("4", "suffix");
         List<IRCodeConfiguration> irc = irRepository.findAll();
         IRCodeConfiguration ircDcument = irc.get(0);
         int nextId = ircDcument.getIrCode();
         nextId = nextId +1;
-        String irCode = ircDcument.getStaticCode() + nextId;
+        String irCode = String.format("%03d", nextId);
         String prefix = ircDcument.getPrefix();
         String suffix = ircDcument.getSuffix();
         String preriod = "";
+        logger.info("ircDcument.getPeriod()...."+ircDcument.getPeriod());
         if (ircDcument.getPeriod() != null && ircDcument.getPeriod().equalsIgnoreCase("MM")) {
             preriod = getMonth(ircDcument.getPeriod());
         } else if (ircDcument.getPeriod() != null && ircDcument.getPeriod().equalsIgnoreCase("MM/YYYY")) {
             preriod = getMonthAndYear(ircDcument.getPeriod());
+        } else if (ircDcument.getPeriod() != null && ircDcument.getPeriod().equalsIgnoreCase("YYYY")) {
+            preriod = getYear(ircDcument.getPeriod());
         }
+        logger.info("preriod...."+preriod);
         String sequence = "";
         String[] res = ircDcument.getSequence().split(",");
         for(String myStr: res) {
             logger.info("sequence split one by one :" +myStr);
             if (seqMap.get(myStr).equalsIgnoreCase("irCode")) {
-                sequence = sequence + irCode;
+                sequence = sequence +" "+irCode;
             }
             if (seqMap.get(myStr).equalsIgnoreCase("preriod")) {
-                sequence = sequence + "/"+preriod;
+                if (preriod != null) {
+                    sequence = sequence +" "+ "/"+preriod;
+                }
             }
             if (seqMap.get(myStr).equalsIgnoreCase("prefix")) {
-                sequence = sequence + prefix;
+                sequence = sequence +" "+ prefix;
             }
             if (seqMap.get(myStr).equalsIgnoreCase("suffix")) {
-                sequence = sequence + suffix;
+                sequence = sequence +" "+ suffix;
             }
         }
         incidentReport.setSequence(sequence);
@@ -87,6 +93,15 @@ public class IncidentReportListener {
         logger.info("Inside getMonthAndYear :"+date);
         YearMonth thisMonth = YearMonth.now();
         DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("MM/yyyy");
+        date = thisMonth.format(monthYearFormatter);
+        logger.info("Inside incidentReport Before Create....date :"+date);
+        return date;
+    }
+
+    private String getYear(String date) {
+        logger.info("Inside getMonthAndYear :"+date);
+        YearMonth thisMonth = YearMonth.now();
+        DateTimeFormatter monthYearFormatter = DateTimeFormatter.ofPattern("yyyy");
         date = thisMonth.format(monthYearFormatter);
         logger.info("Inside incidentReport Before Create....date :"+date);
         return date;

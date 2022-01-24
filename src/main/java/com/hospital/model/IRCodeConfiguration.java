@@ -45,5 +45,7 @@ public class IRCodeConfiguration {
     private String sequence;
     
     private String staticCode;
+    
+    private String receed;
 
 }
