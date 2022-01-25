@@ -4,6 +4,7 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'jacoco'
+    id "org.sonarqube" version "2.6.2"
 }
 
 apply plugin: 'war'
@@ -35,6 +36,7 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-hateoas:1.6.4'
     implementation 'org.springdoc:springdoc-openapi-data-rest:1.6.4'
     implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.4'
+    implementation 'org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184'
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'commons-logging:commons-logging:1.2'
     runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
@@ -57,7 +59,10 @@ test {
 }
 
 jacocoTestReport {
-    dependsOn test
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
 }
 
 jacoco {

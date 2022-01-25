@@ -931,7 +931,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"action\": true,\r\n    \"witness\": true,\r\n    \"template\": 200,\r\n    \"deptsLookupMultiselect\": \"deptsLookupMultiselect\",\r\n    \"incident_Date_Time\": \"2017-01-23\",\r\n    \"incidentNotification\": true,\r\n    \"complaintIdEntry\": \"complaintIdEntry\",\r\n    \"locationDetailsEntry\": \"locationDetailsEntry\",\r\n    \"incidentReportedDept\": 0,\r\n    \"contribFactorYesOrNo\": true,\r\n    \"complaintDatetime\": \"2017-01-23\",\r\n    \"contribFactor\": 3,\r\n    \"preventability\": 3,\r\n    \"patientYesOrNo\": true,\r\n    \"patientname\": 100,\r\n    \"inciCateg\": 100,\r\n    \"inciSubCat\": 100,\r\n    \"personAffected\": true,\r\n    \"inciDescription\": \"inciDescription\",\r\n    \"typeofInci\": 100,\r\n    \"headofDepart\": 0,\r\n    \"upload\": true,\r\n    \"location\": 100\r\n}",
+							"raw": "{\r\n    \"actionTaken\": [\r\n        {\r\n            \"immedActionTaken\": \"test\",\r\n            \"accessTakenBy\": 110,\r\n            \"accessDateTime\": \"2022-01-24T03:34:38.068Z\"\r\n        },\r\n        {\r\n            \"immedActionTaken\": \"tes2t\",\r\n            \"accessTakenBy\": 110,\r\n            \"accessDateTime\": \"2022-01-24T03:34:38.068Z\"\r\n        }\r\n    ],\r\n    \"witness\": [\r\n    ],\r\n    \"notification\": [\r\n    ],\r\n    \"upload\": [\r\n    ],\r\n    \"template\": 200,\r\n    \"deptsLookupMultiselect\": \"deptsLookupMultiselect\",\r\n    \"incident_Date_Time\": \"2017-01-23\",\r\n    \"complaintIdEntry\": \"complaintIdEntry\",\r\n    \"locationDetailsEntry\": \"locationDetailsEntry\",\r\n    \"incidentReportedDept\": 0,\r\n    \"contribFactorYesOrNo\": true,\r\n    \"complaintDatetime\": \"2017-01-23\",\r\n    \"contribFactor\": 3,\r\n    \"preventability\": 3,\r\n    \"patientYesOrNo\": true,\r\n    \"patientname\": 100,\r\n    \"inciCateg\": 100,\r\n    \"inciSubCat\": 100,\r\n    \"personAffected\": true,\r\n    \"inciDescription\": \"inciDescriptionnext\",\r\n    \"typeofInci\": 100,\r\n    \"headofDepart\": 0,\r\n    \"location\": 100,\r\n    \"userId\":\"100\",\r\n    \"irInvestigator\":100\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1023,7 +1023,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{path}}/IncidentReport/search/byDetails?Patientname=100&InciDescription=inciDescription",
+							"raw": "{{path}}/IncidentReport/search/byDetails?department=department&sequence=IR/010021NAP&fromreportingDate=2022-01-17&toreportingDate=2022-01-20&InciCateg=100&userId=100&irInvestigator=100&fromIncidentDateTime=2017-01-21&toIncidentDateTime=2017-01-24",
 							"host": [
 								"{{path}}"
 							],
@@ -1034,12 +1034,40 @@
 							],
 							"query": [
 								{
-									"key": "Patientname",
+									"key": "department",
+									"value": "department"
+								},
+								{
+									"key": "sequence",
+									"value": "IR/010021NAP"
+								},
+								{
+									"key": "fromreportingDate",
+									"value": "2022-01-17"
+								},
+								{
+									"key": "toreportingDate",
+									"value": "2022-01-20"
+								},
+								{
+									"key": "InciCateg",
 									"value": "100"
 								},
 								{
-									"key": "InciDescription",
-									"value": "inciDescription"
+									"key": "userId",
+									"value": "100"
+								},
+								{
+									"key": "irInvestigator",
+									"value": "100"
+								},
+								{
+									"key": "fromIncidentDateTime",
+									"value": "2017-01-21"
+								},
+								{
+									"key": "toIncidentDateTime",
+									"value": "2017-01-24"
 								}
 							]
 						}
