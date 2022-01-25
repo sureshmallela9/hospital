@@ -6,21 +6,16 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.rest.core.annotation.RestResource;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -72,39 +67,38 @@ public class IncidentReport {
 
     private Integer Preventability;
 
-    
-    @OneToMany(mappedBy = "incidentReport", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "incidentReport_id", nullable=false)
+    @OneToMany(cascade = CascadeType.ALL)
     @RestResource(exported = false)
     private Set<ActionTaken> actionTaken;
 
-    @JsonManagedReference(value="action-taken")
     public Set<ActionTaken> getActionTakens() {
         return actionTaken;
     }
 
-    @OneToMany(mappedBy = "incidentReport", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "incidentReport_id", nullable=false)
+    @OneToMany(cascade = CascadeType.ALL)
     @RestResource(exported = false)
     private Set<Witness> witness;
 
-    @JsonManagedReference(value="witness")
     public Set<Witness> getWitness() {
         return witness;
     }
 
-    @OneToMany(mappedBy = "incidentReport", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "incidentReport_id", nullable=false)
+    @OneToMany(cascade = CascadeType.ALL)
     @RestResource(exported = false)
     private Set<Notification> notification;
 
-    @JsonManagedReference(value="notification")
     public Set<Notification> getNotification() {
         return notification;
     }
 
-    @OneToMany(mappedBy = "incidentReport", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JoinColumn(name = "incidentReport_id", nullable=false)
+    @OneToMany(cascade = CascadeType.ALL)
     @RestResource(exported = false)
     private Set<Upload> upload;
 
-    @JsonManagedReference(value="upload")
     public Set<Upload> getUpload() {
         return upload;
     }
