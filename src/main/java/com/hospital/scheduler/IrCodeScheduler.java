@@ -34,12 +34,12 @@ public class IrCodeScheduler {
         IRCodeConfiguration irCode = irCodeList.get(0);
         int currentDay = getDay("dd");
         String currentMonth = getMonth("MM");
-        if (irCode.getReceed() != null && irCode.getReceed().equalsIgnoreCase("M")) {
+        if (irCode.getReseed() != null && irCode.getReseed().equalsIgnoreCase("M")) {
             if (currentDay == 1) {
                 irCode.setIrCode(0);
                 irRepository.save(irCode);
             }
-        } else if (irCode.getReceed() != null && irCode.getReceed().equalsIgnoreCase(currentMonth)) {
+        } else if (irCode.getReseed() != null && irCode.getReseed().equalsIgnoreCase(currentMonth)) {
             if (currentDay == 1 ) {
                 irCode.setIrCode(0);
                 irRepository.save(irCode);

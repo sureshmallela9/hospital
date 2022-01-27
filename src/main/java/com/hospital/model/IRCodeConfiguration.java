@@ -46,6 +46,6 @@ public class IRCodeConfiguration {
     
     private String staticCode;
     
-    private String receed;
+    private String reseed;
 
 }

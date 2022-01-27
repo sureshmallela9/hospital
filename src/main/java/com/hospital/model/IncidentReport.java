@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -68,7 +69,7 @@ public class IncidentReport {
     private Integer Preventability;
 
     @JoinColumn(name = "incidentReport_id", nullable=false)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @RestResource(exported = false)
     private Set<ActionTaken> actionTaken;
 
@@ -76,8 +77,17 @@ public class IncidentReport {
         return actionTaken;
     }
 
+    public void setActionTaken(Set<ActionTaken> actionTaken) {
+        if (this.actionTaken == null) {
+            this.actionTaken = actionTaken;
+        } else {
+            this.actionTaken.retainAll(actionTaken);
+            this.actionTaken.addAll(actionTaken);
+        }
+    }
+
     @JoinColumn(name = "incidentReport_id", nullable=false)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @RestResource(exported = false)
     private Set<Witness> witness;
 
@@ -85,8 +95,17 @@ public class IncidentReport {
         return witness;
     }
 
+    public void setWitness(Set<Witness> witness) {
+        if (this.witness == null) {
+            this.witness = witness;
+        } else {
+            this.witness.retainAll(witness);
+            this.witness.addAll(witness);
+        }
+    }
+
     @JoinColumn(name = "incidentReport_id", nullable=false)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @RestResource(exported = false)
     private Set<Notification> notification;
 
@@ -94,8 +113,17 @@ public class IncidentReport {
         return notification;
     }
 
+    public void setNotification(Set<Notification> notification) {
+        if (this.notification == null) {
+            this.notification = notification;
+        } else {
+            this.notification.retainAll(notification);
+            this.notification.addAll(notification);
+        }
+    }
+
     @JoinColumn(name = "incidentReport_id", nullable=false)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @RestResource(exported = false)
     private Set<Upload> upload;
 
@@ -103,6 +131,15 @@ public class IncidentReport {
         return upload;
     }
     
+    public void setUpload(Set<Upload> upload) {
+        if (this.upload == null) {
+            this.upload = upload;
+        } else {
+            this.upload.retainAll(upload);
+            this.upload.addAll(upload);
+        }
+    }
+
     @Column(nullable = true)
     private Integer IncidentReportedDept;
     

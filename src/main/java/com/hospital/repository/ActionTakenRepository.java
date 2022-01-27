@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.hospital.model.ActionTaken;
 
-@RepositoryRestResource(collectionResourceRel = "accessTaken", path = "accessTaken")
+@RepositoryRestResource(collectionResourceRel = "actionTaken", path = "actionTaken")
 public interface ActionTakenRepository extends CrudRepository<ActionTaken, Long> {
     public ActionTaken findById(int id);
     public Set<ActionTaken> findAll();
