@@ -167,4 +167,22 @@ public class IncidentReport {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date reportingDate = new java.sql.Date(new java.util.Date().getTime());
+    
+    @JoinColumn(name = "incidentReport_id", nullable=false)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @RestResource(exported = false)
+    private Set<IrStatusDetails> irStatusDetails;
+
+    public Set<IrStatusDetails> getIrStatusDetails() {
+        return irStatusDetails;
+    }
+
+    public void setIrStatusDetails(Set<IrStatusDetails> irStatusDetails) {
+        if (this.irStatusDetails == null) {
+            this.irStatusDetails = irStatusDetails;
+        } else {
+            this.irStatusDetails.retainAll(irStatusDetails);
+            this.irStatusDetails.addAll(irStatusDetails);
+        }
+    }
 }
