@@ -3,6 +3,8 @@ package com.hospital.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,10 +19,46 @@ public class IncidentReportTest {
     public static final String stringValue = "StringValue";
 
     private IncidentReport incidentReport;
-
+    Set<ActionTaken> actionTaken = new HashSet<>();
+    Set<Witness> witness = new HashSet<>();
+    Set<Notification> notification = new HashSet<>();
+    Set<Upload> upload = new HashSet<>();
+    ActionTaken at;
+    Notification nt;
+    Witness wit;
+    Upload up;
+    
     @BeforeEach
     public void setUp() throws Exception {
         incidentReport = new IncidentReport();
+        at = new ActionTaken();
+        at.setId(0L);
+        at.setAccessDateTime(new Date());
+        at.setImmedActionTaken(stringValue);
+        at.setAccessTakenBy(numberValue);
+        actionTaken.add(at);
+        incidentReport.setActionTaken(actionTaken);
+
+        wit = new Witness();
+        wit.setId(0L);
+        wit.setWitnessDateTime(new Date());
+        wit.setWitnessDept(numberValue);
+        wit.setWitnessName(numberValue);
+        witness.add(wit);
+        incidentReport.setWitness(witness);
+        nt = new Notification();
+        nt.setDept(numberValue);
+        nt.setId(0L);
+        nt.setName(numberValue);
+        nt.setNotificationDateTime(new Date());
+        notification.add(nt);
+        incidentReport.setNotification(notification);
+        up = new Upload();
+        up.setId(0L);
+        up.setUpload(booleanValue);
+        up.setUploadFilePath(stringValue);
+        upload.add(up);
+        incidentReport.setUpload(upload);
         incidentReport.setId(ID);
         incidentReport.setHeadofDepart(numberValue);
         incidentReport.setPersonAffected(booleanValue);
@@ -41,6 +79,11 @@ public class IncidentReportTest {
         incidentReport.setTemplate(numberValue);
         incidentReport.setInciDescription(stringValue);
         incidentReport.setInciDescription(stringValue);
+        incidentReport.setComplaIntegerDatetime(new Date());
+        incidentReport.setComplaIntegerIdEntry(stringValue);
+        incidentReport.setIrInvestigator(numberValue);
+        incidentReport.setStatus(stringValue);
+        incidentReport.setDepartment(stringValue);
     }
 
     @AfterEach
@@ -50,7 +93,7 @@ public class IncidentReportTest {
     }
 
     @Test
-    public void testUserDetails() throws Exception {
+    public void testIncidentReportDetails() throws Exception {
         assertEquals(ID, incidentReport.getId());
         assertEquals(stringValue, incidentReport.getLocationDetailsEntry());
         assertEquals(booleanValue, incidentReport.getPatientYesOrNo());
@@ -70,5 +113,31 @@ public class IncidentReportTest {
         assertEquals(stringValue, incidentReport.getSequence());
         assertEquals(numberValue, incidentReport.getLocation());
         assertEquals(date, incidentReport.getIncident_Date_Time());
+        assert up.getUploadFilePath() != null;
+        assert up.getId() == 0;
+        assert nt.getId() == 0;
+        assert nt.getDept() == 1;
+        assert nt.getNotificationDateTime() != null;
+        assert nt.getName() == 1;
+        assert wit.getId() == 0;
+        assert wit.getWitnessDateTime() != null;
+        assert wit.getWitnessName() == 1;
+        assert wit.getWitnessDept() == 1;
+        assert at.getAccessDateTime() != null;
+        assert at.getAccessTakenBy() == 1;
+        assert at.getId() == 0;
+        assert at.getImmedActionTaken() != null;
+        assert incidentReport.getActionTaken() != null;
+        assert incidentReport.getWitness() != null;
+        assert incidentReport.getNotification() != null;
+        assert incidentReport.getUpload() != null;
+        assert incidentReport.getContribFactorYesOrNo() != null;
+        assert incidentReport.getComplaIntegerDatetime() != null;
+        assert incidentReport.getComplaIntegerIdEntry() != null;
+        assert incidentReport.getActionTakens() != null;
+        assert incidentReport.getWitness() != null;
+        assert incidentReport.getDepartment() != null;
+        assert incidentReport.getIrInvestigator() == 1;
+        assert incidentReport.getStatus() != null;
     }
 }

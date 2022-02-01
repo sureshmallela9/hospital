@@ -22,6 +22,7 @@ public class User {
     private String contact;
     private String email;
     private int department;
-    private int role;
+    private String role;
     private String password;
+    private String country;
 }

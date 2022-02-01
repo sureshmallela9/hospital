@@ -10,7 +10,7 @@ import com.hospital.model.CustomUserDetails;
 import com.hospital.model.User;
 import com.hospital.repository.UserRepository;
 
-//@Service("userDetailsService")
+@Service
 public class CustomUserDetailsService implements UserDetailsService {
  
     @Autowired
@@ -18,7 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService {
      
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	System.out.println("loadUserByUsername");
+        System.out.println("loadUserByUsername");
         User user = userRepo.findByUserName(username);
         if (user == null) {
             throw new UsernameNotFoundException("User not found EX");
