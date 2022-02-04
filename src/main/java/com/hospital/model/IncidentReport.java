@@ -163,6 +163,8 @@ public class IncidentReport {
     
     @Column(nullable = true)
     private Integer irInvestigator;
+    
+    private Integer capturedBy;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
