@@ -26,7 +26,7 @@ public class UserPermission {
     private Long id;
 
     private String permission;
-
+    private String role;
     @ManyToOne
     @RestResource(exported = false)
     @JoinColumn(name = "user_id")
