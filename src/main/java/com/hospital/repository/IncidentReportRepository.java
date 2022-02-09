@@ -2,6 +2,7 @@ package com.hospital.repository;
 
 
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -19,6 +20,7 @@ import com.hospital.model.IncidentReport;
 public interface IncidentReportRepository extends CrudRepository<IncidentReport, Long> {
     public IncidentReport findById(int id);
     public Set<IncidentReport> findAll();
+    public long countByStatus(String status);
 
     @RestResource(path = "byDetails", rel = "customFindMethod")
     @Query("select e from IncidentReport e where " + 
@@ -26,7 +28,7 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
             "(:#{#sequence == null} = true or e.sequence in (:sequence)) and "+
             "(:#{#status == null} = true or e.status in (:status)) and "+
             "(:userId is null or e.userId = :userId) and"+
-            "(:#{#inciCateg == null} = true or e.InciCateg in (:inciCateg)) and"+
+            "(:#{#InciCateg == null} = true or e.InciCateg in (:InciCateg)) and"+
             "(:#{#typeofInci == null} = true or e.TypeofInci in (:typeofInci)) and "+
             "(:#{#irInvestigator == null} = true or e.irInvestigator in (:irInvestigator)) and"+
             "(:fromIncidentDateTime is null or e.Incident_Date_Time >= :fromIncidentDateTime) and"+
@@ -38,12 +40,44 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
             @Param("sequence") List<String> sequence,
             @Param("status") List<String> status,
             @Param("userId") Integer userId,
-            @Param("inciCateg") List<Integer> inciCateg,
+            @Param("InciCateg") List<Integer> InciCateg,
             @Param("typeofInci") List<Integer> typeofInci,
             @Param("irInvestigator") List<Integer> irInvestigator,
             @Param("fromIncidentDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromIncidentDateTime,
             @Param("toIncidentDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd") Date toIncidentDateTime,
             @Param("fromreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromreportingDate,
-            @Param("toreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date toreportingDate) ;
+            @Param("toreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date toreportingDate);
+    
 
+    @RestResource(path = "countByTypeofInci", rel = "customFindMethod")
+    @Query("select count(e) from IncidentReport e where (:typeofInci is null or e.TypeofInci = :typeofInci)")
+    public long countByInciCateg(Integer typeofInci);
+
+    @RestResource(path = "countByReportingDate", rel = "customFindMethod")
+    @Query("select count(e) from IncidentReport e where e.reportingDate between :startDate and :endDate")
+    public long countByReportingDate();
+
+    @RestResource(path = "countByIncidentDate", rel = "customFindMethod")
+    @Query("select count(e) from IncidentReport e where e.Incident_Date_Time between :startDate and :endDate")
+    public long countByIncidentDateTime();
+
+    public static LocalDate startDate = getStartDate();
+    public static LocalDate endDate = getEndDate();
+
+    static LocalDate getStartDate() {
+        LocalDate today = LocalDate.now();
+        System.out.println("First day: " + today.withDayOfMonth(1));
+        System.out.println("Last day: " + today.withDayOfMonth(today.lengthOfMonth()));
+        LocalDate startDate = today.withDayOfMonth(1);
+        return startDate;
+
+    }
+    static LocalDate getEndDate() {
+        LocalDate today = LocalDate.now();
+        System.out.println("First day: " + today.withDayOfMonth(1));
+        System.out.println("Last day: " + today.withDayOfMonth(today.lengthOfMonth()));
+        LocalDate endDate = today.withDayOfMonth(today.lengthOfMonth());
+        return endDate;
+        
+    }
 }
