@@ -1,26 +1,24 @@
 package com.hospital.repository;
 
-
-
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import com.hospital.model.IncidentReport;
 
 @RepositoryRestResource(collectionResourceRel = "IncidentReport", path = "IncidentReport")
 public interface IncidentReportRepository extends CrudRepository<IncidentReport, Long> {
     public IncidentReport findById(int id);
     public Set<IncidentReport> findAll();
+    public long countByUserId(Integer userId);
     public long countByStatus(String status);
+    public long countByUserDept(String userDept);
+
 
     @RestResource(path = "byDetails", rel = "customFindMethod")
     @Query("select e from IncidentReport e where " + 
@@ -53,31 +51,18 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
     @Query("select count(e) from IncidentReport e where (:typeofInci is null or e.TypeofInci = :typeofInci)")
     public long countByInciCateg(Integer typeofInci);
 
-    @RestResource(path = "countByReportingDate", rel = "customFindMethod")
-    @Query("select count(e) from IncidentReport e where e.reportingDate between :startDate and :endDate")
-    public long countByReportingDate();
-
+    @RestResource(path = "countByPatientYesOrNo", rel = "customFindMethod")
+    @Query("select count(e) from IncidentReport e where (:patientYesOrNo is null or e.PatientYesOrNo = :patientYesOrNo)")
+    public long countByPatientYesOrNo(boolean patientYesOrNo);
+    
+    
     @RestResource(path = "countByIncidentDate", rel = "customFindMethod")
-    @Query("select count(e) from IncidentReport e where e.Incident_Date_Time between :startDate and :endDate")
+    @Query("select count(e) from IncidentReport e where e.Incident_Date_Time = MONTH(current_date())")
     public long countByIncidentDateTime();
 
-    public static LocalDate startDate = getStartDate();
-    public static LocalDate endDate = getEndDate();
+    @RestResource(path = "countCurrentMonth", rel = "customFindMethod")
+    @Query("select count(e) from IncidentReport e where month(e.reportingDate) = MONTH(current_date())")
+    int countByCurrentMonth();
 
-    static LocalDate getStartDate() {
-        LocalDate today = LocalDate.now();
-        System.out.println("First day: " + today.withDayOfMonth(1));
-        System.out.println("Last day: " + today.withDayOfMonth(today.lengthOfMonth()));
-        LocalDate startDate = today.withDayOfMonth(1);
-        return startDate;
 
-    }
-    static LocalDate getEndDate() {
-        LocalDate today = LocalDate.now();
-        System.out.println("First day: " + today.withDayOfMonth(1));
-        System.out.println("Last day: " + today.withDayOfMonth(today.lengthOfMonth()));
-        LocalDate endDate = today.withDayOfMonth(today.lengthOfMonth());
-        return endDate;
-        
-    }
 }
