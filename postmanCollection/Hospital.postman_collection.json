@@ -913,12 +913,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{path}}/IncidentReport",
+							"raw": "{{path}}/IncidentReport?tenantId=tenantId2",
 							"host": [
 								"{{path}}"
 							],
 							"path": [
 								"IncidentReport"
+							],
+							"query": [
+								{
+									"key": "tenantId",
+									"value": "tenantId2"
+								}
 							]
 						}
 					},
@@ -939,12 +945,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{path}}/IncidentReport",
+							"raw": "{{path}}/IncidentReport?tenantId=tenantId2",
 							"host": [
 								"{{path}}"
 							],
 							"path": [
 								"IncidentReport"
+							],
+							"query": [
+								{
+									"key": "tenantId",
+									"value": "tenantId2"
+								}
 							]
 						}
 					},
@@ -1093,6 +1105,82 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Count by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/IncidentReport/search/countByStatus?status=1",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"IncidentReport",
+								"search",
+								"countByStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "count by typeofInci",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/IncidentReport/search/countTypeofInci?typeofInci=1",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"IncidentReport",
+								"search",
+								"countTypeofInci"
+							],
+							"query": [
+								{
+									"key": "typeofInci",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "countByReportingDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/IncidentReport/search/countByReportingDate",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"IncidentReport",
+								"search",
+								"countByReportingDate"
+							],
+							"query": [
+								{
+									"key": "typeofInci",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1216,6 +1304,31 @@
 							"path": [
 								"user",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find by role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/userPermission/search/findByRole?role=incidentManager",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"userPermission",
+								"search",
+								"findByRole"
+							],
+							"query": [
+								{
+									"key": "role",
+									"value": "incidentManager"
+								}
 							]
 						}
 					},
@@ -1351,6 +1464,54 @@
 							"path": [
 								"profile",
 								"sequence"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API URLS",
+			"item": [
+				{
+					"name": "getAPI URLS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path}}/apiurls",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"apiurls"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Api Urls",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"action\":\"Test\",\r\n    \"url\":\"url\",\r\n    \"key1\":\"key1\",\r\n    \"key2\":\"key2\",\r\n    \"key3\":\"key3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{path}}/apiurls",
+							"host": [
+								"{{path}}"
+							],
+							"path": [
+								"apiurls"
 							]
 						}
 					},

@@ -10,4 +10,5 @@ import com.hospital.model.UserPermission;
 public interface UserPermissionRepository extends CrudRepository<UserPermission, Long> {
     public UserPermission findById(int id);
     public Set<UserPermission> findAll();
+    public UserPermission findByRole(String role);
 }

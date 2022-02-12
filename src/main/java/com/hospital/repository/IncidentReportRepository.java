@@ -17,8 +17,6 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
     public Set<IncidentReport> findAll();
     public long countByUserId(Integer userId);
     public long countByStatus(String status);
-    public long countByUserDept(String userDept);
-
 
     @RestResource(path = "byDetails", rel = "customFindMethod")
     @Query("select e from IncidentReport e where " + 
@@ -46,6 +44,9 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
             @Param("fromreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromreportingDate,
             @Param("toreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date toreportingDate);
     
+    @RestResource(path = "countByDepartment", rel = "customFindMethod")
+    @Query("select count(e) from IncidentReport e where (:#{#department == null} = true or e.department in (:department))")
+    public long countByDepartment(List<String> department);
 
     @RestResource(path = "countByTypeofInci", rel = "customFindMethod")
     @Query("select count(e) from IncidentReport e where (:typeofInci is null or e.TypeofInci = :typeofInci)")
