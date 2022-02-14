@@ -1,6 +1,7 @@
 package com.hospital.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,8 @@ public class UserPermission {
     private Long id;
 
     private String permission;
+    
+    @Column(unique=true, nullable = false)
     private String role;
     @ManyToOne
     @RestResource(exported = false)
