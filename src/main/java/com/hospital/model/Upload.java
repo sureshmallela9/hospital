@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +24,9 @@ public class Upload {
  
     private boolean upload;
 
-    private String uploadFilePath;
+    public String uploadFilePath;
+    
+    
+//    public MultipartFile file;
 
 }

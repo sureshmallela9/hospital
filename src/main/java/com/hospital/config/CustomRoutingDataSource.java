@@ -9,7 +9,6 @@ public class CustomRoutingDataSource extends AbstractRoutingDataSource {
     @Override
     protected Object determineCurrentLookupKey() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();     // get request object
-        System.out.println("attr : "+attr);
         if(attr!=null) {
             String tenantId = attr.getRequest().getParameter("tenantId");
             if (tenantId != null) {

@@ -17,11 +17,12 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
     public Set<IncidentReport> findAll();
     public long countByUserId(Integer userId);
     public long countByStatus(String status);
+    public long countByStatusAndUserId(String status, Integer userId);
 
     @RestResource(path = "byDetails", rel = "customFindMethod")
     @Query("select e from IncidentReport e where " + 
             "(:department is null or e.department = :department) and "+
-            "(:#{#sequence == null} = true or e.sequence in (:sequence)) and "+
+            "(:sequence is null or e.sequence LIKE %:sequence%) and "+
             "(:#{#status == null} = true or e.status in (:status)) and "+
             "(:userId is null or e.userId = :userId) and"+
             "(:#{#InciCateg == null} = true or e.InciCateg in (:InciCateg)) and"+
@@ -33,16 +34,16 @@ public interface IncidentReportRepository extends CrudRepository<IncidentReport,
             "(:toreportingDate is null or e.reportingDate <= :toreportingDate)")
     List<IncidentReport> findByPatientnameAndInciDescription(
             @Param("department") String department,
-            @Param("sequence") List<String> sequence,
+            @Param("sequence") String sequence,
             @Param("status") List<String> status,
             @Param("userId") Integer userId,
             @Param("InciCateg") List<Integer> InciCateg,
             @Param("typeofInci") List<Integer> typeofInci,
             @Param("irInvestigator") List<Integer> irInvestigator,
-            @Param("fromIncidentDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromIncidentDateTime,
-            @Param("toIncidentDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd") Date toIncidentDateTime,
-            @Param("fromreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromreportingDate,
-            @Param("toreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date toreportingDate);
+            @Param("fromIncidentDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date fromIncidentDateTime,
+            @Param("toIncidentDateTime") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date toIncidentDateTime,
+            @Param("fromreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date fromreportingDate,
+            @Param("toreportingDate") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date toreportingDate);
     
     @RestResource(path = "countByDepartment", rel = "customFindMethod")
     @Query("select count(e) from IncidentReport e where (:#{#department == null} = true or e.department in (:department))")

@@ -1,11 +1,20 @@
 package com.hospital.listener;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +22,17 @@ import org.springframework.data.rest.core.annotation.HandleAfterCreate;
 import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
 import org.springframework.data.rest.core.annotation.HandleBeforeSave;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.hospital.model.FileResponse;
 import com.hospital.model.IRCodeConfiguration;
 import com.hospital.model.IncidentReport;
+import com.hospital.model.Upload;
 import com.hospital.repository.IncidentReportRepository;
 import com.hospital.repository.IrCodeRepository;
+import com.hospital.service.StorageService;
 
 @RepositoryEventHandler
 public class IncidentReportListener {
@@ -29,11 +44,29 @@ public class IncidentReportListener {
 
     @Autowired
     IrCodeRepository irRepository;
+    
+    @Autowired
+    private StorageService storageService;
 
     @HandleBeforeCreate
     public void handleIncidentReportBeforeCreate(IncidentReport incidentReport) {
         if (incidentReport != null && incidentReport.getStatus() != null && incidentReport.getStatus().equalsIgnoreCase("2")) {
             sequenceGen(incidentReport);
+        }
+        logger.info("incidentReport.getUpload() :: "+incidentReport.getUpload().size());
+        for (Upload u : incidentReport.getUpload()) {
+            logger.info("u.getUploadFilePath() :: "+u.getUploadFilePath());
+            if (u.uploadFilePath != null) {
+            MultipartFile file = getMulFileByPath(u.uploadFilePath);
+            String name = storageService.store(file);
+            System.out.println("upload-file2 : "+file.getName());
+            String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/download/")
+                    .path(name)
+                    .toUriString();
+            FileResponse fileResp = new FileResponse(name, uri, file.getContentType(), file.getSize());
+            u.setUploadFilePath(fileResp.getUri());
+           }
         }
     }
     
@@ -42,7 +75,57 @@ public class IncidentReportListener {
         if (incidentReport != null && incidentReport.getStatus() != null && incidentReport.getSequence() == null &&  incidentReport.getStatus().equalsIgnoreCase("2")) {
             sequenceGen(incidentReport);
         }
+        for (Upload u : incidentReport.getUpload()) {
+            if (u.uploadFilePath != null) {
+            MultipartFile file = getMulFileByPath(u.uploadFilePath);
+            String name = storageService.store(file);
+            System.out.println("upload-file2 : "+file.getName());
+            String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path("/download/")
+                    .path(name)
+                    .toUriString();
+            FileResponse fileResp = new FileResponse(name, uri, file.getContentType(), file.getSize());
+            u.setUploadFilePath(fileResp.getUri());
+            }
+        }
     }
+
+    private static MultipartFile getMulFileByPath(String picPath) {
+        FileItem fileItem = createFileItem(picPath);
+        MultipartFile mfile = new CommonsMultipartFile(fileItem);
+        return mfile;
+    }
+    private static FileItem createFileItem(String filePath)
+    {
+        FileItemFactory factory = new DiskFileItemFactory(16, null);
+        String textFieldName = "textField";
+        logger.info("filePath :: "+filePath);
+        Path path = Paths.get(filePath);
+        Path fileName = path.getFileName();
+        FileItem item = factory.createItem(textFieldName, "text/plain", true,
+                fileName.toString());
+        File newfile = new File(filePath);
+        int bytesRead = 0;
+        byte[] buffer = new byte[8192];
+        try
+        {
+            FileInputStream fis = new FileInputStream(newfile);
+            OutputStream os = item.getOutputStream();
+            while ((bytesRead = fis.read(buffer, 0, 8192))
+                != -1)
+            {
+                os.write(buffer, 0, bytesRead);
+            }
+            os.close();
+            fis.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return item;
+    }
+
     private void sequenceGen(IncidentReport incidentReport) {
         logger.info("Inside incidentReport Before Create....");
         Map<String, String> seqMap = new HashMap<>();
